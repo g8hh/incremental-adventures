@@ -163,6 +163,7 @@ var cnExcludePostfix = [
 //原样输出的字段：(.+)
 var cnRegReplace = new Map([
     [/^Prestige for (\d+) point$/, '声望 $1 点'],
+    [/^Prestige for (\d+) points$/, '声望 $1 点'],
     [/^(\d+) Royal points$/, '$1 皇家点数'],
     [/^Cost: (\d+) RP$/, '成本：$1 皇家点数'],
     [/^Usages: (\d+)\/$/, '用途：$1\/'],
