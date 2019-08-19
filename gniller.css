@@ -3,6 +3,10 @@ body{
     font-size: 14px;
     background-color: white;
 }
+body.dark{
+    background-color: black;
+    color: white;
+}
 h2{
     margin: 5px;
 }
@@ -20,7 +24,7 @@ h2{
 #top-menu{
     padding: 5px;
     width: 100vw;
-    width: calc(100vw - 30px);
+    width: calc(100vw - 10px);
     text-align: center;
     border-bottom: 3px solid grey;
 }
@@ -62,6 +66,9 @@ h2{
     background-color: white;
     z-index: 1;
 }
+body.dark .hero-block{
+    background-color: black;
+}
 .hero-block>h3,.hero-block>p{
     position: relative;
     z-index: 2;
@@ -75,6 +82,9 @@ h2{
     z-index: 1;
     background-color: lightgrey;
     transition: width 3000ms;
+}
+body.dark .hero-block-loader{
+    background-color: #222222;
 }
 .hero-block.active{
     border: 3px solid orange;
@@ -104,6 +114,9 @@ h2{
     background-color: white;
     z-index: 1;
 }
+body.dark .enemy-block{
+    background-color: black;
+}
 .enemy-block>h3,.enemy-block>p{
     position: relative;
     z-index: 2;
@@ -117,6 +130,9 @@ h2{
     z-index: 1;
     background-color: lightgrey;
     transition: width 3000ms;
+}
+body.dark .enemy-block-loader{
+    background-color: #222222;
 }
 .enemy-block.active{
     border: 3px solid orange;
@@ -156,11 +172,17 @@ h2{
     border: 1px solid orange;
     background-color: lightgrey;
 }
+body.dark .button.purchased{
+    background-color: #222222;
+}
 .button.highlight{
     border: 1px solid orange;
 }
 .button:hover{
     background-color: lightgrey;
+}
+body.dark .button:hover{
+    background-color: #222222;
 }
 .button.green{
     background-color: green;
@@ -283,6 +305,9 @@ h2{
 }
 .prestige-menu-button.active{
     background-color: #eeeeee;
+}
+body.dark .prestige-menu-button.active{
+    background-color: #222222;
 }
 .prestige-upgrade-button{
     padding: 5px 15px;
