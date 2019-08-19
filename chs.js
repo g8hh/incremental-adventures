@@ -68,7 +68,6 @@ var cnItems = {
     'Respawn at (floor-10), instead of 1*': '重生在（层-10），而不是1 *',
     '*The respawn improvement only works for respawns after dead, it won\'t trigger when prestiging or reskilling. Read as current floor minus amount. It is relative to your current floor.': '*重生后的改进仅适用于死后的重生，并且在声望或重新训练时不会触发。 读为当前楼层减去金额。 它与您当前的楼层有关。',
     'Auto-buyers automatically upgrade your stat upgrades for the previous prestige. They also automatically trigger a prestige when this earns get enough points to buy an upgrade!': '自动购买者会自动升级您之前声望的统计升级。 当获得足够的积分购买升级时，他们也会自动触发声望！',
-    'Auto-prestige triggered by your Prestige Layer 1 Experience auto-buyer! (now': '自动声望触发根据您的声望层1经验自动购买者!(现在',
     'AutoBuyers': '自动购买者',
     '- Next unlock at Floor': '- 下次解锁在层',
     '- Progress to Prestige point': '- 声望点进度',
@@ -191,8 +190,7 @@ var cnRegReplace = new Map([
     [/^Cost: (\d+) points$/, '成本： $1 点'],
     [/^Skip up to (\d+) floor\(s\)\*\*$/, '最多跳过$1层\*\*'],
     [/^Respawn at \(floor\-(\d+)\), instead of \(floor\-(\d+)\)\*$/, '在\(层\-$1\)重生，而不是\(层\-$2\)\*'],
-    
-    [/^(\d+) Royal points$/, '$1 皇家点数'],
+    [/^Auto-prestige triggered by your Prestige Layer (\d+) Experience auto-buyer! \(now$/, '自动声望触发根据您的声望层 $1 经验自动购买者!\(现在'],
     [/^Cost: (\d+) RP$/, '成本：$1 皇家点数'],
     [/^Usages: (\d+)\/$/, '用途：$1\/'],
     [/^workers: (\d+)\/$/, '工人：$1\/'],
