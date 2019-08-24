@@ -191,7 +191,7 @@ var cnRegReplace = new Map([
     [/^Skip up to (\d+) floor\(s\)\*\*$/, '最多跳过$1层\*\*'],
     [/^Respawn at \(floor\-(\d+)\), instead of \(floor\-(\d+)\)\*$/, '在\(层\-$1\)重生，而不是\(层\-$2\)\*'],
     [/^Auto-prestige triggered by your Prestige Layer (\d+) Experience auto-buyer! \(now$/, '自动声望触发根据您的声望层 $1 经验自动购买者!\(现在'],
-    [/^Cost: (\d+) RP$/, '成本：$1 皇家点数'],
+    [/^Auto-prestige triggered by your Prestige Layer (\d+) Armor auto-buyer! \(x(\d+) >$/, '自动声望触发根据您的声望层 $1 经验自动购买者!\(x$1 >'],
     [/^Usages: (\d+)\/$/, '用途：$1\/'],
     [/^workers: (\d+)\/$/, '工人：$1\/'],
 
