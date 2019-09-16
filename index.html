@@ -1,5 +1,5 @@
-<head>
-                  <meta charset="utf-8">
+<head>                  <meta charset="utf-8">
+
     <script src="lodash.min.js"></script>
     <script src="break_eternity.min.js"></script>
     <!-- <script src="notations.js"></script> -->
@@ -9,15 +9,16 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
 </head>
 <body>
-                  <script src="chs.js"></script>
+                     <script src="chs.js"></script>
 <script src="//likexia.gitee.io/game/zh/core.js"></script>
 
     <div id="top-menu">
         <h2 style="line-height: 150%;">Level: <span id="game-level">1</span><span id="experience-information">&nbsp;- Experience: <span id="current-game-experience">0</span>/<span id="required-game-experience">4</span> (<span id="experience-percentage">0</span>%)</span><span id="next-prestige-percentage-text"></span></h2>
-        <h2 style="margin-bottom: 0;">Floor: <span id="game-floor">1</span> - Highest Floor: <span id="game-highest-floor">0</span> - Next unlock at Floor: <span id="game-next-unlock-floor">4</span></h2>
+        <h2 style="margin-bottom: 0;">Floor: <span id="game-floor">1</span> - Highest Floor: <span id="game-highest-floor">0</span> - Next unlock at Floor: <span id="game-next-unlock-floor">4</span><span id="game-gold-block">&nbsp;- Gold: <span id="game-gold">0</span></span></h2>
         <div class="button-container" style="padding-bottom: 0; padding-top: 5px;">
             <div id="top-menu-battlefield-button" class="top-menu-button button" onclick="openBattleFieldScreen();">Battlefield</div>
             <div id="top-menu-edit-heroes-button" class="top-menu-button button" onclick="openEditHeroScreen();">Heroes</div>
+            <div id="top-menu-armory-button" class="top-menu-button button" onclick="openArmoryScreen();">Armory</div>
             <div id="top-menu-prestige-button" class="top-menu-button button" onclick="openPrestigeScreen();">Prestige</div>
             <div id="top-menu-info-button" class="top-menu-button button" onclick="openInfoScreen();">Info</div>
             <div id="top-menu-options-button" class="top-menu-button button" onclick="openOptionsScreen();">Options</div>
@@ -44,6 +45,8 @@
             <p id="combat-log-9" class="combat-log-record"></p>
             <p id="combat-log-10" class="combat-log-record"></p>
         </div>
+    </div>
+    <div id="armory-screen" class="game-screen">
     </div>
     <div id="prestige-screen" class="game-screen">
     </div>

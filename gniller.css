@@ -193,9 +193,9 @@ body.dark .button:hover{
     text-align: center;
     width: 100vw;
 }
-#battlefield-screen{
+/* #battlefield-screen{
     padding-bottom: 200px;
-}
+} */
 #combat-log-1{
     opacity: 0.1;
 }
@@ -243,6 +243,12 @@ body.dark .button:hover{
     display: none;
 }
 #top-menu-prestige-button{
+    display: none;
+}
+#game-gold-block{
+    display: none;
+}
+#top-menu-armory-button{
     display: none;
 }
 .current-health-text{
@@ -311,4 +317,21 @@ body.dark .prestige-menu-button.active{
 }
 .prestige-upgrade-button{
     padding: 5px 15px;
+}
+.armory-upgrade-button{
+    padding: 5px 15px;
+    display: inline-block;
+}
+.armory-class-block>div>p {
+    margin: 7.5px 0;
+}
+.armory-class-block{
+    width: calc(25vw - 11px);
+    border-right: 1px solid grey;
+    float: left;
+    /* display: flex; */
+    justify-content: flex-start;
+    align-content: center;
+    flex-flow: column;
+    padding: 5px;
 }
