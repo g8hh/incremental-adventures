@@ -125,7 +125,7 @@ var cnItems = {
     'Sword and Shield': '剑与盾',
     'Synergy': '协作',
     'Timestamp': '时间戳',
-    'When you attack, you also heal for x% of your healing. When you heal, you also attack for x% of your damage': '当你进行攻击时，你也会治愈x％的治疗效果。 当你痊愈时，你也会受到x％伤害的攻击',
+    'When you attack, you also heal for x% of your healing. When you heal, you also attack for x% of your damage': '当你进行攻击时，你也会治愈x％的治疗效果。 当你痊愈时，你也会造成x％你的伤害',
     'When you deal more damage than the enemy has health, x% of that damage carries over to the next enemy (and the next, if you dealt that much': '当你造成比敌人更健康的伤害时，x％的伤害会传染给下一个敌人（而下一个，如果你处理了那么多',
     'When you healed more than your targets max-health, x% of that healing goes over the maximum health. Up to 1000% of the targets max health': '当你治愈超过你的目标生命值上限时，x％的治疗效果会超过最大生命值。 高达1000％的目标最大健康状况',
     'You have x% chance to deal double damage': '您有x％的几率造成双倍伤害',
