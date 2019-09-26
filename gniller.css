@@ -335,3 +335,18 @@ body.dark .prestige-menu-button.active{
     flex-flow: column;
     padding: 5px;
 }
+#offline-progress-info{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 5px 10px;
+    border: 1px solid grey;
+    border-top: 0;
+    border-left: 0;
+    border-bottom-right-radius: 5px;
+    background-color: white;
+}
+body.dark #offline-progress-info{
+    background-color: black;
+}

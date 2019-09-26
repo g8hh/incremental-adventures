@@ -176,8 +176,8 @@ var cnItems = {
     'When you healed more than your targets max-health, x% of that healing goes over the maximum health. Up to 1000x the targets max health': '当您恢复的健康超过目标的最大健康值时，该恢复的x％会超过最大健康值。 最高目标生命值的1000倍',
     'When your damage is divided, you only take a portion of incoming damage. The incoming damage is divided before armor is subtracted, meaning armor gains power through damage reduction': '当您的损害被分割时，您只会承受一部分传入损害。 在减去护甲之前对传入伤害进行分割，这意味着护甲通过减少伤害获得力量',
     'On floor change': '当层数改变',
-    '': '',
-    '': '',
+    'Offline progress': '离线进度',
+    'Your hero stats will be increased by 133% because you have unlocked more than 6 heroes!': '您的英雄属性数据将增加133％，因为您已解锁了6个以上的英雄！',
     '': '',
     '': '',
     '': '',
@@ -278,6 +278,7 @@ var cnRegReplace = new Map([
     [/^(.+) > (.+) Critical damage$/, '$1 > $2 暴击伤害'],
     [/^(.+) > (.+) Blessed$/, '$1 > $2 护佑'],
     [/^(.+) > (.+) Morale$/, '$1 > $2 士气'],
+    [/^Processing offline progress: (.+)$/, '离线收益进度：$1'],
     [/^workers: (\d+)\/$/, '工人：$1\/'],
 
 ]);
