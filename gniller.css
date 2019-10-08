@@ -245,6 +245,9 @@ body.dark .button:hover{
 #top-menu-prestige-button{
     display: none;
 }
+#top-menu-shop-button{
+    display: none;
+}
 #game-gold-block{
     display: none;
 }
@@ -289,6 +292,10 @@ body.dark .button:hover{
     margin-top: -5px;
 }
 .prestige-button{
+    padding: 20px 50px;
+    font-size: 150%;
+}
+.shop-exp-button{
     padding: 20px 50px;
     font-size: 150%;
 }

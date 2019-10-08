@@ -1,17 +1,19 @@
-<head>                  
-    <meta charset="utf-8">
+<head>
+       <meta charset="utf-8">
     <title>增量冒险</title>
+
+    <script src='kongregate_api.js'></script>
+    <script type="text/javascript" src="PlayFabClientApi.js"></script>
     <script src="lodash.min.js"></script>
     <script src="break_eternity.min.js"></script>
     <script src="aes.js"></script>
     <!-- <script src="notations.js"></script> -->
     <script src="gniller-min.js"></script>
     <link rel="stylesheet" type="text/css" href="gniller.css">
-    <script src='kongregate_api.js'></script>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
 </head>
 <body>
-<script src="chs.js"></script>
+   <script src="chs.js"></script>
 <script src="//likexia.gitee.io/game/zh/core.js"></script>
 
     <div id="top-menu">
@@ -24,6 +26,7 @@
             <div id="top-menu-armory-button" class="top-menu-button button" onclick="openArmoryScreen();">Armory</div>
             <div id="top-menu-prestige-button" class="top-menu-button button" onclick="openPrestigeScreen();">Prestige</div>
             <div id="top-menu-info-button" class="top-menu-button button" onclick="openInfoScreen();">Info</div>
+            <div id="top-menu-shop-button" class="top-menu-button button" onclick="openShopScreen();">Kreds</div>
             <div id="top-menu-options-button" class="top-menu-button button" onclick="openOptionsScreen();">Options</div>
         </div>
     </div>
@@ -74,8 +77,12 @@
         <p style="margin-top: 0; margin-bottom: 0;">Split or singles means - it splits when it can, but buys single stats if the first option wasn't an option</p>
         <p style="margin-top: 0; margin-bottom: 0;">Split only means it only buys all enabled buyers at once</p>
         <p style="margin-top: 0; margin-bottom: 0;">Split or exp means the only exception to buy single is for experience</p>
+        <h2 style="margin-top: 25px;">How does offline progress work?</h2>
+        <p style="margin-top: 0; margin-bottom: 0;">The first hour gives 100% progress, after that you get the square root of the hours offline, up to 25 hours offline, or 5 hours of offline progress.</p>
         <h2 style="margin-top: 25px;">So will there be more content?</h2>
         <p style="margin-top: 0; margin-bottom: 0;">Honestly, I did not expect the game to be received as well as it was. But yes, definitely! I have some idea's but can't make any promises as to what will be added or when. But your reactions, feedback and suggestions have definitely motivated me to take Incremental Adventures to a level I didn't expect it to go! For that, I sincerely thank you!</p>
+    </div>
+    <div id="shop-screen" class="game-screen">
     </div>
     <div id="options-screen" class="game-screen">
     </div>
