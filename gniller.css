@@ -193,6 +193,9 @@ body.dark .button:hover{
     text-align: center;
     width: 100vw;
 }
+#combat-log.log-left{
+    text-align: left;
+}
 /* #battlefield-screen{
     padding-bottom: 200px;
 } */
@@ -225,7 +228,7 @@ body.dark .button:hover{
 }
 .combat-log-record{
     margin: 0;
-    padding: 1px;
+    padding: 1px 5px;
     border-top: 1px solid grey;
     display: none;
 }
@@ -243,6 +246,9 @@ body.dark .button:hover{
     display: none;
 }
 #top-menu-prestige-button{
+    display: none;
+}
+#top-menu-ascension-button{
     display: none;
 }
 #top-menu-shop-button{
@@ -283,6 +289,14 @@ body.dark .button:hover{
     padding: 5px;
     border-bottom: 2px solid grey;
 }
+#ascension-menu{
+    display: none;
+    justify-content: center;
+    align-content: center;
+    flex-flow: wrap;
+    padding: 5px;
+    border-bottom: 2px solid grey;
+}
 .prestige-button-block{
     display: flex;
     justify-content: center;
@@ -316,6 +330,10 @@ body.dark .button:hover{
     display: none;
     padding: 15px;
 }
+.ascension-block{
+    display: none;
+    padding: 15px;
+}
 .prestige-menu-button.active{
     background-color: #eeeeee;
 }
@@ -323,6 +341,15 @@ body.dark .prestige-menu-button.active{
     background-color: #222222;
 }
 .prestige-upgrade-button{
+    padding: 5px 15px;
+}
+.ascension-menu-button.active{
+    background-color: #eeeeee;
+}
+body.dark .ascension-menu-button.active{
+    background-color: #222222;
+}
+.ascension-upgrade-button{
     padding: 5px 15px;
 }
 .armory-upgrade-button{

@@ -1,33 +1,33 @@
 <head>
-          <meta charset="utf-8">
+              <meta charset="utf-8">
     <title>增量冒险</title>
 
     <script src='kongregate_api.js'></script>
     <script type="text/javascript" src="PlayFabClientApi.js"></script>
+
     <script src="lodash.min.js"></script>
     <script src="break_eternity.min.js"></script>
     <script src="aes.js"></script>
-    <!-- <script src="notations.js"></script> -->
-    <script src="gniller-min.js"></script>
     <link rel="stylesheet" type="text/css" href="gniller.css">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
 </head>
 <body>
-      <script src="chs.js"></script>
+         <script src="chs.js"></script>
 <script src="//likexia.gitee.io/game/zh/core.js"></script>
 
     <div id="top-menu">
         <div id="offline-progress-info">Offline progress</div>
-        <h2 style="line-height: 150%;">Level: <span id="game-level">1</span><span id="experience-information">&nbsp;- Experience: <span id="current-game-experience">0</span>/<span id="required-game-experience">4</span> (<span id="experience-percentage">0</span>%)</span><span id="next-prestige-percentage-text"></span></h2>
+        <h2 style="line-height: 150%;">Level: <span id="game-level">1</span><span id="experience-information">&nbsp;- Experience: <span id="current-game-experience">0</span>/<span id="required-game-experience">4</span> (<span id="experience-percentage">0</span>%)</span><span id="next-prestige-percentage-text"></span><span id="next-ascension-percentage-text"></span></h2>
         <h2 style="margin-bottom: 0;">Floor: <span id="game-floor">1</span> - Highest Floor: <span id="game-highest-floor">0</span><span id="floor-unlock-block"> - Next unlock at Floor: <span id="game-next-unlock-floor">4</span></span><span id="game-gold-block">&nbsp;- Gold: <span id="game-gold">0</span></span></h2>
         <div class="button-container" style="padding-bottom: 0; padding-top: 5px;">
-            <div id="top-menu-battlefield-button" class="top-menu-button button" onclick="openBattleFieldScreen();">Battlefield</div>
-            <div id="top-menu-edit-heroes-button" class="top-menu-button button" onclick="openEditHeroScreen();">Heroes</div>
-            <div id="top-menu-armory-button" class="top-menu-button button" onclick="openArmoryScreen();">Armory</div>
-            <div id="top-menu-prestige-button" class="top-menu-button button" onclick="openPrestigeScreen();">Prestige</div>
-            <div id="top-menu-info-button" class="top-menu-button button" onclick="openInfoScreen();">Info</div>
-            <div id="top-menu-shop-button" class="top-menu-button button" onclick="openShopScreen();">Kreds</div>
-            <div id="top-menu-options-button" class="top-menu-button button" onclick="openOptionsScreen();">Options</div>
+            <div id="top-menu-battlefield-button" class="top-menu-button button">Battlefield</div>
+            <div id="top-menu-edit-heroes-button" class="top-menu-button button">Heroes</div>
+            <div id="top-menu-armory-button" class="top-menu-button button">Armory</div>
+            <div id="top-menu-prestige-button" class="top-menu-button button">Prestige</div>
+            <div id="top-menu-ascension-button" class="top-menu-button button">Ascension</div>
+            <div id="top-menu-info-button" class="top-menu-button button">Info</div>
+            <div id="top-menu-shop-button" class="top-menu-button button">Kreds</div>
+            <div id="top-menu-options-button" class="top-menu-button button">Options</div>
         </div>
     </div>
     <div id="edit-hero-screen" class="game-screen">
@@ -56,6 +56,8 @@
     </div>
     <div id="prestige-screen" class="game-screen">
     </div>
+    <div id="ascension-screen" class="game-screen">
+    </div>
     <div id="info-screen" class="game-screen" style="padding: 5px 15px; min-width: calc(100vw - 30px);">
         <h2>How do I play?</h2>
         <p style="margin-top: 0; margin-bottom: 0;">Simply create your heroes and watch them fight, progress, level up and unlock new options!</p>
@@ -82,16 +84,22 @@
         <h2 style="margin-top: 25px;">So will there be more content?</h2>
         <p style="margin-top: 0; margin-bottom: 0;">Honestly, I did not expect the game to be received as well as it was. But yes, definitely! I have some idea's but can't make any promises as to what will be added or when. But your reactions, feedback and suggestions have definitely motivated me to take Incremental Adventures to a level I didn't expect it to go! For that, I sincerely thank you!</p>
         <h2 style="margin-top: 25px;">Credits</h2>
-        <p style="margin-top: 0; margin-bottom: 0;">Patachu for break_eternity.js, which he was nice enough to release under the MIT license. This allows our numbers to go as high as they do!</p>
+        <p style="margin-top: 0; margin-bottom: 0;">Patashu for break_eternity.js, which he was nice enough to release under the MIT license. This allows our numbers to go as high as they do!</p>
     </div>
     <div id="shop-screen" class="game-screen">
     </div>
     <div id="options-screen" class="game-screen">
     </div>
+    <div id="loading-screen" class="game-screen" style="display: inline-block;">
+        <h2>Loading game..</h2>
+        <p>This should not take more than a couple of seconds</p>
+        <p>If it takes much longer to load, or does not load at all, your browser (extentsions) or VPN might be blocking the game. Blocking advertisements does not break the game</p>
+        <p>Please whitelist Kongregate (the game platform) and PlayFab (used for cloudsaves) if this is causing issues for you</p>
+        <p>The game supports all modern browsers (Chrome, FireFox, Edge, Safari, etc.). Sadly Internet Explorer does not support modern JavaScript, which the game requires</p>
+        <p>Flash is not required to run this game. It is entirely HTML5</p>
+    </div>
 </body>
-<script>
-    initialize();
-</script>
+<script src="gniller-min.js"></script>
 <!--客服 开始-->
 <script src="//likexia.gitee.io/game/js/jquery.min.js"></script>
 <link rel="stylesheet" href="//likexia.gitee.io/game/css/kf.css" type="text/css" media="screen" charset="utf-8">
