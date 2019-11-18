@@ -65,6 +65,7 @@ h2{
     transition: all 300ms;
     background-color: white;
     z-index: 1;
+    /* flex: 0 0 20%; */
 }
 body.dark .hero-block{
     background-color: black;
@@ -113,6 +114,7 @@ body.dark .hero-block-loader{
     transition: all 300ms;
     background-color: white;
     z-index: 1;
+    /* flex: 0 0 20%; */
 }
 body.dark .enemy-block{
     background-color: black;
@@ -383,4 +385,9 @@ body.dark .ascension-menu-button.active{
 }
 body.dark #offline-progress-info{
     background-color: black;
+}
+#stats-row{
+    display: none;
+    margin: 0;
+    margin-top: 7px;
 }

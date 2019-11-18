@@ -1,10 +1,9 @@
 <head>
-              <meta charset="utf-8">
+                 <meta charset="utf-8">
     <title>增量冒险</title>
 
     <script src='kongregate_api.js'></script>
     <script type="text/javascript" src="PlayFabClientApi.js"></script>
-
     <script src="lodash.min.js"></script>
     <script src="break_eternity.min.js"></script>
     <script src="aes.js"></script>
@@ -12,13 +11,14 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
 </head>
 <body>
-         <script src="chs.js"></script>
+            <script src="chs.js"></script>
 <script src="//likexia.gitee.io/game/zh/core.js"></script>
 
     <div id="top-menu">
         <div id="offline-progress-info">Offline progress</div>
         <h2 style="line-height: 150%;">Level: <span id="game-level">1</span><span id="experience-information">&nbsp;- Experience: <span id="current-game-experience">0</span>/<span id="required-game-experience">4</span> (<span id="experience-percentage">0</span>%)</span><span id="next-prestige-percentage-text"></span><span id="next-ascension-percentage-text"></span></h2>
         <h2 style="margin-bottom: 0;">Floor: <span id="game-floor">1</span> - Highest Floor: <span id="game-highest-floor">0</span><span id="floor-unlock-block"> - Next unlock at Floor: <span id="game-next-unlock-floor">4</span></span><span id="game-gold-block">&nbsp;- Gold: <span id="game-gold">0</span></span></h2>
+        <p id="stats-row"></p>
         <div class="button-container" style="padding-bottom: 0; padding-top: 5px;">
             <div id="top-menu-battlefield-button" class="top-menu-button button">Battlefield</div>
             <div id="top-menu-edit-heroes-button" class="top-menu-button button">Heroes</div>
