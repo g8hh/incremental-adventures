@@ -56,7 +56,7 @@ h2{
     flex-direction: row-reverse;
 }
 .hero-block{
-    padding: 5px 15px;
+    padding: 5px 25px;
     box-shadow: 1px 1px 10px grey;
     border: 3px solid transparent;
     margin: 10px;
@@ -67,11 +67,14 @@ h2{
     z-index: 1;
     /* flex: 0 0 20%; */
 }
+body.smallUnits .hero-block .hero-health, .hero-block .hero-health{
+    margin: 0 -10px;
+}
 body.dark .hero-block{
     background-color: black;
 }
 body.smallUnits .hero-block{
-    padding: 2px 5px;
+    padding: 2px 15px;
     margin: 5px;
 }
 .hero-block>h3,.hero-block>p{
@@ -109,7 +112,7 @@ body.dark .hero-block-loader{
     flex-flow: wrap;
 }
 .enemy-block{
-    padding: 5px 15px;
+    padding: 5px 25px;
     box-shadow: 1px 1px 10px grey;
     border: 3px solid transparent;
     margin: 10px;
@@ -120,8 +123,15 @@ body.dark .hero-block-loader{
     z-index: 1;
     /* flex: 0 0 20%; */
 }
+body.smallUnits .enemy-block .enemy-health, .enemy-block .enemy-health{
+    margin: 0 -10px;
+}
 body.dark .enemy-block{
     background-color: black;
+}
+body.smallUnits .enemy-block{
+    padding: 2px 15px;
+    margin: 5px;
 }
 .enemy-block>h3,.enemy-block>p{
     position: relative;
