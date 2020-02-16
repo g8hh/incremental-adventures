@@ -1,8 +1,9 @@
-<head>
-        <meta charset="utf-8">
+<head>            
+   <meta charset="utf-8">
     <title>增量冒险</title>
     <script src='kongregate_api.js'></script>
     <script type="text/javascript" src="PlayFabClientApi.js"></script>
+
     <script src="lodash.min.js"></script>
     <script src="break_eternity.min.js"></script>
     <script src="aes.js"></script>
@@ -10,13 +11,16 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
 </head>
 <body>
-                  <script src="chs.js"></script>
+                     
+<script src="chs.js"></script>
 <script src="//likexia.gitee.io/game/zh/core.js"></script>
+
     <div id="top-menu">
         <div id="offline-progress-info">Offline progress</div>
-        <h2 style="line-height: 150%;">Level: <span id="game-level">1</span><span id="experience-information">&nbsp;- Experience: <span id="current-game-experience">0</span>/<span id="required-game-experience">4</span> (<span id="experience-percentage">0</span>%)</span><span id="next-prestige-percentage-text"></span><span id="next-ascension-percentage-text"></span></h2>
-        <h2 style="margin-bottom: 0;">Floor: <span id="game-floor">1</span> - Highest Floor: <span id="game-highest-floor">0</span><span id="floor-unlock-block"> - Next unlock at Floor: <span id="game-next-unlock-floor">4</span></span><span id="game-gold-block">&nbsp;- Gold: <span id="game-gold">0</span></span></h2>
+        <h2 id="top-row-1" style="line-height: 150%;"><span id="level-span" style="display: inline-block;">Level: <span id="game-level">1</span><span id="experience-information">&nbsp;- Experience: <span id="current-game-experience">0</span>/<span id="required-game-experience">4</span> (<span id="experience-percentage">0</span>%)</span></span><span id="next-prestige-percentage-text"></span><span id="next-ascension-percentage-text"></span></h2>
+        <h2 id="top-row-2" style="margin-bottom: 0;"><span id="floor-span" style="display: inline-block;">Floor: <span id="game-floor">1</span> - </span>Highest Floor: <span id="game-highest-floor">0</span><span id="floor-unlock-block"> - Next unlock at Floor: <span id="game-next-unlock-floor">4</span></span><span id="game-gold-block">&nbsp;- Gold: <span id="game-gold">0</span></span></h2>
         <p id="stats-row"></p>
+        <p id="trial-row"></p>
         <div class="button-container" style="padding-bottom: 0; padding-top: 5px;">
             <div id="top-menu-battlefield-button" class="top-menu-button button">Battlefield</div>
             <div id="top-menu-edit-heroes-button" class="top-menu-button button">Heroes</div>
@@ -61,7 +65,7 @@
     </div>
     <div id="ascension-screen" class="game-screen">
     </div>
-    <div id="info-screen" class="game-screen" style="padding: 5px 15px; min-width: calc(100vw - 30px);">
+    <div id="info-screen" class="game-screen" style="padding: 5px 15px; min-width: calc(100% - 30px);">
         <h2>How do I play?</h2>
         <p style="margin-top: 0; margin-bottom: 0;">Simply create your heroes and watch them fight, progress, level up and unlock new options!</p>
         <h2 style="margin-top: 25px;">When do I unlock things?</h2>
@@ -83,7 +87,7 @@
         <p style="margin-top: 0; margin-bottom: 0;">Split only means it only buys all enabled buyers at once</p>
         <p style="margin-top: 0; margin-bottom: 0;">Split or exp means the only exception to buy single is for experience</p>
         <h2 style="margin-top: 25px;">How does offline progress work?</h2>
-        <p style="margin-top: 0; margin-bottom: 0;">The first hour gives 100% progress, after that you get the square root of the hours offline, up to 25 hours offline, or 5 hours of offline progress.</p>
+        <p style="margin-top: 0; margin-bottom: 0;">The first hour gives 100% progress, after that you get hours offline ^0.95, up to a maximum of 24 hours of offline progress, obtained after roughly 28 hours of being offline. This means offline progress is 83-100% as effective as online progress. If you have played less than 200 hours (including offline progress), this cap is lowered accordingly, to not overwhelm new players with too much offline progress. The first five hours of the offline progress cap are obtained in about 15 hours of playtime, the first hour of offline progress is obtained in an hour.</p>
         <h2 style="margin-top: 25px;">I feel like I'm progressing too slow, are there any guides?</h2>
         <p style="margin-top: 0; margin-bottom: 0;">manowar999 was nice enough to write a guide for the game, you can find it as a sticky on the forums! It can definitely be of use if you feel like you're missing something. But of course, you can figure it all out by yourself as well if you prefer that!</p>
         <h2 style="margin-top: 25px;">So will there be more content?</h2>
@@ -104,8 +108,7 @@
         <p>Flash is not required to run this game. It is entirely HTML5</p>
     </div>
 </body>
-<script src="gniller-min.js"></script>
-<!--客服 开始-->
+<script src="gniller-min.js"></script><!--客服 开始-->
 <script src="//likexia.gitee.io/game/js/jquery.min.js"></script>
 <link rel="stylesheet" href="//likexia.gitee.io/game/css/kf.css" type="text/css" media="screen" charset="utf-8">
 <script src="//likexia.gitee.io/game/js/kf.js"></script>

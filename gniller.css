@@ -18,13 +18,14 @@ h2{
 .game-screen{
     padding: 5px 0;
     min-width: 100vw;
+    min-width: 100%;
     text-align: center;
     display: none;
 }
 #top-menu{
     padding: 5px;
     width: 100vw;
-    width: calc(100vw - 10px);
+    width: calc(100% - 10px);
     text-align: center;
     border-bottom: 3px solid grey;
 }
@@ -32,13 +33,23 @@ h2{
     margin: 5px 0;
 }
 .edit-hero-block{
-    margin: 15px;
+    margin: 10px;
     display: inline-block;
-    padding: 10px 25px;
+    padding: 10px 5px;
     box-shadow: 1px 1px 10px grey;
+}
+.edit-hero-block>p{
+    margin: 10px;
+}
+.edit-hero-block>p>input[type="button"]{
+    padding: 1px 4px;
+}
+.edit-hero-block>p>input[type="button"]:disabled{
+    opacity: 0.5;
 }
 #heroes-container{
     width: 50vw;
+    width: calc(50vw - 10px);
     display: flex;
     justify-content: center;
     align-content: center;
@@ -56,10 +67,10 @@ h2{
     flex-direction: row-reverse;
 }
 .hero-block{
-    padding: 5px 25px;
+    padding: 5px 15px;
     box-shadow: 1px 1px 10px grey;
     border: 3px solid transparent;
-    margin: 10px;
+    margin: 5px;
     float: right;
     position: relative;
     transition: all 300ms;
@@ -105,6 +116,7 @@ body.dark .hero-block-loader{
 }
 #enemies-container{
     width: 50vw;
+    width: calc(50vw - 10px);
     display: flex;
     justify-content: center;
     align-content: center;
@@ -112,10 +124,10 @@ body.dark .hero-block-loader{
     flex-flow: wrap;
 }
 .enemy-block{
-    padding: 5px 25px;
+    padding: 5px 15px;
     box-shadow: 1px 1px 10px grey;
     border: 3px solid transparent;
-    margin: 10px;
+    margin: 5px;
     float: left;
     position: relative;
     transition: all 300ms;
@@ -160,16 +172,16 @@ body.dark .enemy-block-loader{
     transition: color 300ms;
 }
 .HealthValue{
-    margin-right: 5px;
+    margin: 0 5px;
 }
 .damageValue{
-    margin-right: 5px;
+    margin: 0 5px;
 }
 .armorValue{
-    margin-right: 5px;
+    margin: 0 5px;
 }
 .healingValue{
-    margin-right: 5px;
+    margin: 0 5px;
 }
 #edit-hero-confirm-button{
     display: none;
@@ -193,6 +205,9 @@ body.dark .button.purchased{
 }
 .button.highlight{
     border: 1px solid orange;
+}
+.button.active-trial{
+    border: 1px solid green;
 }
 .button:hover{
     background-color: lightgrey;
@@ -439,7 +454,7 @@ body.dark .ascension-menu-button.active{
     margin: 7.5px 0;
 }
 .armory-class-block{
-    width: calc(25vw - 11px);
+    width: calc(25% - 11px);
     border-right: 1px solid grey;
     float: left;
     /* display: flex; */
@@ -467,4 +482,49 @@ body.dark #offline-progress-info{
     display: none;
     margin: 0;
     margin-top: 7px;
+    width: calc(100% - 10px);
 }
+#trial-row{
+    display: none;
+    margin: 0;
+    margin-top: 7px;
+    width: calc(100% - 10px);
+}
+#trials-table{
+    display: inline-block;
+    text-align: center;
+    border-collapse: collapse;
+    margin-top: 15px;
+    font-size: 14px;
+}
+#trials-table th{
+    font-weight: 600;
+    border: 1px solid #eeeeee;
+}
+#trials-table tr:nth-child(even){
+    /* background-color: #eeeeee; */
+}
+#trials-table td, #trials-table th{
+    padding: 7.5px;
+    border: 1px solid #eeeeee;
+}
+#trials-table, .prestige-upgrade-button>p{
+    margin: 7.5px 0;
+}
+#stats-table{
+    display: block;
+    text-align: center;
+    font-size: 14px;
+    line-height: 14px;
+}
+#stats-table>tbody{
+    display: inline-block;
+    text-align: left;
+}
+#stats-table th, #stats-table td{
+    padding: 0;
+    min-width: 75px;
+}
+/* #floor-span{
+    display: inline-block;
+} */
