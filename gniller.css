@@ -10,6 +10,10 @@ body.dark{
 h2{
     margin: 5px;
 }
+a {
+    /* color: #FF8800; */
+    color: #dd6600;
+}
 @media (max-width: 768px){
     body{
         font-size: 10px;
@@ -48,8 +52,8 @@ h2{
     opacity: 0.5;
 }
 #heroes-container{
-    width: 50vw;
-    width: calc(50vw - 10px);
+    width: 50%;
+    width: calc(50% - 10px);
     display: flex;
     justify-content: center;
     align-content: center;
@@ -76,6 +80,7 @@ h2{
     transition: all 300ms;
     background-color: white;
     z-index: 1;
+    max-width: 30%;
     /* flex: 0 0 20%; */
 }
 body.smallUnits .hero-block .hero-health, .hero-block .hero-health{
@@ -115,8 +120,8 @@ body.dark .hero-block-loader{
     transition: color 300ms;
 }
 #enemies-container{
-    width: 50vw;
-    width: calc(50vw - 10px);
+    width: 50%;
+    width: calc(50% - 10px);
     display: flex;
     justify-content: center;
     align-content: center;
@@ -133,6 +138,7 @@ body.dark .hero-block-loader{
     transition: all 300ms;
     background-color: white;
     z-index: 1;
+    max-width: 30%;
     /* flex: 0 0 20%; */
 }
 body.smallUnits .enemy-block .enemy-health, .enemy-block .enemy-health{
@@ -222,7 +228,8 @@ body.dark .button:hover{
     position: fixed;
     bottom: 0;
     text-align: center;
-    width: 100vw;
+    width: 100%;
+    z-index: -1;
 }
 #combat-log.log-left{
     text-align: left;
@@ -375,6 +382,15 @@ body.smallUnits #combat-log-14{
 #prestige-screen{
     padding-top: 0;
 }
+#ascension-screen{
+    padding-top: 0;
+}
+#info-screen{
+    padding-top: 0;
+}
+.info-button{
+    display: none;
+}
 #prestige-menu{
     display: none;
     justify-content: center;
@@ -384,6 +400,14 @@ body.smallUnits #combat-log-14{
     border-bottom: 2px solid grey;
 }
 #ascension-menu{
+    display: none;
+    justify-content: center;
+    align-content: center;
+    flex-flow: wrap;
+    padding: 5px;
+    border-bottom: 2px solid grey;
+}
+#info-menu{
     display: none;
     justify-content: center;
     align-content: center;
@@ -523,8 +547,21 @@ body.dark #offline-progress-info{
 }
 #stats-table th, #stats-table td{
     padding: 0;
-    min-width: 75px;
+    padding-right: 15px;
+    min-width: 60px;
 }
 /* #floor-span{
     display: inline-block;
 } */
+.info-block>h2{
+    margin-top: 25px;
+}
+.info-block>p{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.info-block{
+    display: none;
+    padding: 0 15px;
+    padding-bottom: 25px;
+}

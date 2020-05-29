@@ -1,9 +1,8 @@
-<head>            
-   <meta charset="utf-8">
+<head>
+      <meta charset="utf-8">
     <title>增量冒险</title>
     <script src='kongregate_api.js'></script>
     <script type="text/javascript" src="PlayFabClientApi.js"></script>
-
     <script src="lodash.min.js"></script>
     <script src="break_eternity.min.js"></script>
     <script src="aes.js"></script>
@@ -11,14 +10,13 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
 </head>
 <body>
-                     
-<script src="chs.js"></script>
+   <script src="chs.js"></script>
 <script src="//likexia.gitee.io/game/zh/core.js"></script>
 
     <div id="top-menu">
         <div id="offline-progress-info">Offline progress</div>
-        <h2 id="top-row-1" style="line-height: 150%;"><span id="level-span" style="display: inline-block;">Level: <span id="game-level">1</span><span id="experience-information">&nbsp;- Experience: <span id="current-game-experience">0</span>/<span id="required-game-experience">4</span> (<span id="experience-percentage">0</span>%)</span></span><span id="next-prestige-percentage-text"></span><span id="next-ascension-percentage-text"></span></h2>
-        <h2 id="top-row-2" style="margin-bottom: 0;"><span id="floor-span" style="display: inline-block;">Floor: <span id="game-floor">1</span> - </span>Highest Floor: <span id="game-highest-floor">0</span><span id="floor-unlock-block"> - Next unlock at Floor: <span id="game-next-unlock-floor">4</span></span><span id="game-gold-block">&nbsp;- Gold: <span id="game-gold">0</span></span></h2>
+        <h2 id="top-row-1" style="line-height: 150%; min-height: 27px;"><span id="level-span" style="display: inline-block;">Level: <span id="game-level">1</span><span id="experience-information">&nbsp;- Experience: <span id="current-game-experience">0</span>/<span id="required-game-experience">4</span> (<span id="experience-percentage">0</span>%)</span></span><span id="next-prestige-percentage-text"></span><span id="next-ascension-percentage-text"></span></h2>
+        <h2 id="top-row-2" style="margin-bottom: 0;"><span id="floor-span" style="display: inline-block;">Floor: <span id="game-floor">1</span> -&nbsp;</span><span id="floorskip-span" style="display: none;">Max floor skip: <span id="max-floor-skip">1</span> -&nbsp;</span>Highest Floor: <span id="game-highest-floor">0</span><span id="floor-unlock-block"> - Next unlock at Floor: <span id="game-next-unlock-floor">4</span></span><span id="game-gold-block">&nbsp;- Gold: <span id="game-gold">0</span></span></h2>
         <p id="stats-row"></p>
         <p id="trial-row"></p>
         <div class="button-container" style="padding-bottom: 0; padding-top: 5px;">
@@ -65,35 +63,139 @@
     </div>
     <div id="ascension-screen" class="game-screen">
     </div>
-    <div id="info-screen" class="game-screen" style="padding: 5px 15px; min-width: calc(100% - 30px);">
-        <h2>How do I play?</h2>
-        <p style="margin-top: 0; margin-bottom: 0;">Simply create your heroes and watch them fight, progress, level up and unlock new options!</p>
-        <h2 style="margin-top: 25px;">When do I unlock things?</h2>
-        <p style="margin-top: 0; margin-bottom: 0;">You unlock stats points as well as new heroes by reaching certain floors. The top menu shows you the floor at which you unlock something new.</p>
-        <h2 style="margin-top: 25px;">When can I prestige and what does that mean?</h2>
-        <p style="margin-top: 0; margin-bottom: 0;">Your first prestige will be unlocked when your team reaches level 100. You can reset your level to acquire "prestige point(s)". These can be spend on a variety of upgrade that improve your next run!</p>
-        <h2 style="margin-top: 25px;">Is there more content after prestige?</h2>
-        <p style="margin-top: 0; margin-bottom: 0;">Yes. There are more layers to prestige. They consume all of your previous prestige points, as well as points spend on stats upgrades. This will set you back a bit, but allow you to reach even higher numbers when you proceed.  And once get to around prestige layer 20, you'll unlock ascension which offer a whole new mechanic to further push your limits</p>
-        <h2 style="margin-top: 25px;">What is the highest prestige layer?</h2>
-        <p style="margin-top: 0; margin-bottom: 0;">Who told you there is one? No one should know this yet!</p>
-        <h2 style="margin-top: 25px;">Why do I gain prestige points so slowly?</h2>
-        <p style="margin-top: 0; margin-bottom: 0;">Try spending more prestige point in the current layer, as well as the previous layer(s). The amount gained improves over the amount spent on every layer.</p>
-        <h2 style="margin-top: 25px;">I have six heroes, why didn't I get a seventh?</h2>
-        <p style="margin-top: 0; margin-bottom: 0;">Six heroes is the limit, or the game would get too slow later on. However, after your sixth hero, your stats are now multiplied instead of receiving another hero. Meaning if you would have 7, your heroes now have 7/6 power, or 117%. This keeps increasing and is yet another multiplier!</p>
-        <h2 style="margin-top: 25px;">What do the minimal buy multipliers mean?</h2>
-        <p style="margin-top: 0; margin-bottom: 0;">This is the minimal required amount to buy an upgrade, this goes for manual as well as prestige. For manual this mean you can only click the button for x1.1 (or your number), for AutoBuyer this means they'll wait before buying the given layer until the upgrade is atleast that big (x1.1 or your configuration).</p>
-        <h2 style="margin-top: 25px;">What do the AutoBuyer strategies mean?</h2>
-        <p style="margin-top: 0; margin-bottom: 0;">Split or singles means - it splits when it can, but buys single stats if the first option wasn't an option</p>
-        <p style="margin-top: 0; margin-bottom: 0;">Split only means it only buys all enabled buyers at once</p>
-        <p style="margin-top: 0; margin-bottom: 0;">Split or exp means the only exception to buy single is for experience</p>
-        <h2 style="margin-top: 25px;">How does offline progress work?</h2>
-        <p style="margin-top: 0; margin-bottom: 0;">The first hour gives 100% progress, after that you get hours offline ^0.95, up to a maximum of 24 hours of offline progress, obtained after roughly 28 hours of being offline. This means offline progress is 83-100% as effective as online progress. If you have played less than 200 hours (including offline progress), this cap is lowered accordingly, to not overwhelm new players with too much offline progress. The first five hours of the offline progress cap are obtained in about 15 hours of playtime, the first hour of offline progress is obtained in an hour.</p>
-        <h2 style="margin-top: 25px;">I feel like I'm progressing too slow, are there any guides?</h2>
-        <p style="margin-top: 0; margin-bottom: 0;">manowar999 was nice enough to write a guide for the game, you can find it as a sticky on the forums! It can definitely be of use if you feel like you're missing something. But of course, you can figure it all out by yourself as well if you prefer that!</p>
-        <h2 style="margin-top: 25px;">So will there be more content?</h2>
-        <p style="margin-top: 0; margin-bottom: 0;">Honestly, I did not expect the game to be received as well as it was. But yes, definitely! I have some idea's but can't make any promises as to what will be added or when. But your reactions, feedback and suggestions have definitely motivated me to take Incremental Adventures to a level I didn't expect it to go! For that, I sincerely thank you!</p>
-        <h2 style="margin-top: 25px;">Credits</h2>
-        <p style="margin-top: 0; margin-bottom: 0;">Patashu for break_eternity.js, which he was nice enough to release under the MIT license. This allows our numbers to go as high as they do!</p>
+    <div id="info-screen" class="game-screen">
+        <div id="info-menu" style="display: flex;">
+            <div id="info-menu-button-general" class="button prestige-menu-button info-button active" style="display: inline-block;" onclick="changeInfoBlock('general');">General</div>
+            <div id="info-menu-button-armory" class="button prestige-menu-button info-button" onclick="changeInfoBlock('armory');">Armory</div>
+            <div id="info-menu-button-prestige" class="button prestige-menu-button info-button" onclick="changeInfoBlock('prestige');">Prestige</div>
+            <div id="info-menu-button-prestige-autobuyers" class="button prestige-menu-button info-button" onclick="changeInfoBlock('prestige-autobuyers');">Prestige AutoBuyers</div>
+            <div id="info-menu-button-ascension" class="button prestige-menu-button info-button" onclick="changeInfoBlock('ascension');">Ascension</div>
+            <div id="info-menu-button-ascension-autobuyers" class="button prestige-menu-button info-button" onclick="changeInfoBlock('ascension-autobuyers');">Ascension AutoBuyers</div>
+            <div id="info-menu-button-game-info" class="button prestige-menu-button info-button" style="display: inline-block;" onclick="changeInfoBlock('game-info');">Game Info</div>
+        </div>
+        <div id="info-block-general" class="info-block" style="display: inline-block;">
+            <h2>How do I play?</h2>
+            <p>Simply create your heroes and watch them fight, progress, level up and unlock new options!</p>
+            <h2>When do I unlock things?</h2>
+            <p>You unlock stats points as well as new heroes by reaching certain floors. The top menu shows you the floor at which you unlock something new</p>
+            <h2>How does the game save?</h2>
+            <p>It uses cloud save (as well as a local backup)! If you are logged in to Kongregate, the game automatically saves to the cloud every thirty seconds or so. Obviously this requires an internet connection to work, but if you lose internet for a bit, it'll pick up later. If you switch devices and continue on another device later, it'll grab your save from the cloud if you are logged in to the same Kongregate account. Warning: If you decide to run two version of the game to compare strategies, it's better not to run those from the same Kongregate account (incognito without being logged in is fine). Otherwise, both versions may sync to the cloudsave and that could cause the "wrong" version to be considered recent</p>
+            <h2>When can I prestige and what does that mean?</h2>
+            <p>Your first prestige will be unlocked when your team reaches level 100. You can reset your level to acquire "prestige point(s)". These can be spend on a variety of upgrade that improve your next run!</p>
+            <h2>Is there more content after prestige?</h2>
+            <p>Yes. There are more layers to prestige. They consume all of your previous prestige points, as well as points spend on stats upgrades. This will set you back a bit, but allow you to reach even higher numbers when you proceed. And once get to around prestige layer 20, you'll unlock ascension which offers a whole new mechanic to further push your limits!</p>
+            <h2>What is the highest prestige layer?</h2>
+            <p>Who told you there is one? No one should know this yet!</p>
+            <h2>I have six heroes, why didn't I get a seventh?</h2>
+            <p>Six heroes is the limit, or the game would get too slow later on. However, after your sixth hero, your stats are now multiplied instead of receiving another hero. Meaning if you would have 7, your heroes now have 7/6 power, or 117%. This keeps increasing and is yet another multiplier!</p>
+            <h2>How does offline progress work?</h2>
+            <p>The first hour gives 100% progress, after that you get hours offline ^0.95, up to a maximum of 24 hours of offline progress, obtained after roughly 28 hours of being offline. This means offline progress is 83-100% as effective as online progress. If you have played less than 200 hours (including offline progress), this cap is lowered accordingly, to not overwhelm new players with too much offline progress. The first five hours of the offline progress cap are obtained in about 15 hours of playtime, the first hour of offline progress is obtained in an hour</p>
+            <h2>I feel like I'm progressing too slow, are there any guides?</h2>
+            <p>manowar999 was nice enough to write a guide for the game, you can find it as a sticky on the forums! It can definitely be of use if you feel like you're missing something. But of course, you can figure it all out by yourself as well if you prefer that! Oh, and additional tabs will appear in this Info section as well when that becomes relevant. So check those out when something is unclear!</p>
+        </div>
+        <div id="info-block-armory" class="info-block">
+            <h2>Armory</h2>
+            <p>The Armory provides class specific items. Some of which are stats improvements, others come with new mechanics to the gameplay. Details of all Armory items are located at the bottom of the Armory tab (you may need to scroll to see them), but here they are as well:</p><br/>
+            <p style="font-weight: 600;">All equipment multiplies your base stats, and is affected by other multipliers as well!</p>
+            <p style="margin: 5px;"><span style="font-weight: 600;">Damage taken: </span>When your warriors damage taken is divided, you only take a portion of incoming damage. The incoming damage is divided before armor is subtracted, meaning armor gains power through damage reduction</p>
+            <p style="margin: 5px;"><span style="font-weight: 600;">Overkill: </span>When your warrior deals more damage than the enemy has health, x% of that damage carries over to the next enemy (and the next, if you dealt that much)</p>
+            <p style="margin: 5px;"><span style="font-weight: 600;">Blessed: </span>Every time a hero is healed by a cleric, all stats of all heroes are increased by x%. This works incrementaly for every heal, but it resets on respawn</p>
+            <p style="margin: 5px;"><span style="font-weight: 600;">Overheal: </span>When your cleric healed more than the targets max-health, x% of that healing goes over the maximum health. Up to 1000x the targets maximum health</p>
+            <p style="margin: 5px;"><span style="font-weight: 600;">Critical chance: </span>Your rangers have x% chance to deal <span style="font-weight: 600;">critical damage</span></p>
+            <p style="margin: 5px;"><span style="font-weight: 600;">Morale: </span>All stats of all heroes get multiplied by this percentage for every paladin alive. And yes, it stacks with multiple paladins</p>
+            <p style="margin: 5px;"><span style="font-weight: 600;">Synergy: </span>When your paladin attacks, it also heals for x% of its healing. When your paladin heals, it also attacks for x% of its damage</p>
+
+            <br/><br/><p>The following effects apply to items that are only revealed a bit further into the game:</p><br/>
+            <p style="margin: 5px;"><span style="font-weight: 600;">Charge speed: </span>Reduces the time it takes to proceed to the next floor by 10% per warrior (x0.9^warriors)</p>
+            <p style="margin: 5px;"><span style="font-weight: 600;">Revival speed: </span>Reduces the time it takes to respawn after death or prestige by 10% per cleric (x0.9^clerics)</p>
+            <p style="margin: 5px;"><span style="font-weight: 600;">Combat speed: </span>Reduces the time between combat actions by 10% per ranger, for both allies and enemies (x0.9^rangers)</p>
+            <p style="margin: 5px;"><span style="font-weight: 600;">Unity: </span>Increases the effect of Charge, Revival and Combat speed by 1% per unique class in the party (additive) per paladin (also additive). This applies to the buffs other classes provide and does not directly give the bonus itself</p>
+            <p style="margin: 5px;"><span style="font-weight: 600;">Double speed for units after the first: </span>Both friendly and enemy units after the first in their group do their actions at double speed</p>
+            <p style="margin: 5px;"><span style="font-weight: 600;">Bundle prestige stats: </span>Have a single prestige "all-stats" upgrade instead of having experience, health, damage, armor and healing separately. It costs the same as one stat normally would, but powers all five at once</p>
+            <p style="margin: 5px;"><span style="font-weight: 600;">Boss spawning only: </span>Causes enemies to no longer spawn in groups but instead as single enemies that yield ^1.01 as much experience</p>
+        </div>
+        <div id="info-block-prestige" class="info-block">
+            <h2>Prestige</h2>
+            <p>Prestige resets your current level and floor back to 1, but awards you with prestige points to spend on upgrades and unlocks. Unlocked heroes and armory upgrades do not reset when you prestige</p>
+            <h2>Stats</h2>
+            <p>Stat upgrades improve your experience gain, max health, damage, armor and/or healing. Points that you have claimed or invested in stats upgrades also increase future prestige point gain</p>
+            <h2>Buy multiplier</h2>
+            <p>You can toggle the buy multiplier to buy stats upgrades in bulk. Say you have 5 experience upgrades, and set the buy multiplier to x2, the next purchase would go for 10 experience upgrades. You can right-click the buy multiplier as well, to cycle through the options in reverse (that goes for many options in the game)</p>
+            <h2>Gameplay unlocks</h2>
+            <p>These unlocks are limited to one purchase per prestige layer and don't count toward the bonus prestige point gain that stats upgrades do. Individual unlock descriptions can be found below the unlocks in the prestige tabs</p>
+            <h2>Why do I gain prestige points so slowly?</h2>
+            <p>Try spending more prestige point in the current layer, as well as the previous layer(s). The amount gained increases with the amount claimed on that layer</p>
+        </div>
+        <div id="info-block-prestige-autobuyers" class="info-block">
+            <h2>Prestige AutoBuyer options</h2>
+            <p>Prestige AutoBuyers trigger when the configured auto-prestige setting applies. By default, this is on respawn. In this case, when your team respawns, and the autobuyers are able to buy at least the configured minimal amount of stats, they will automatically trigger a prestige</p>
+            <h2>AutoBuyer strategies</h2>
+            <p><span style="font-weight: 600;">Split or singles: </span>Splits points between all stats when it can, but buys single stats if splitting wasn't possible due to limited points</p>
+            <p><span style="font-weight: 600;">Split only means: </span>Only buys if all enabled autobuyers can trigger at once</p>
+            <p><span style="font-weight: 600;">Split or exp: </span>Buys split only with a single stat exception for experience</p>
+            <h2>AutoBuyers on manual prestige (and soft-buy)</h2>
+            <p>If this is enabled, autobuyers will automatically puchase stats when the layer is manually prestiged (if the autobuyer is purchased and enabled on the layer above). However, soft-prestiges also requires this to be enabled, as points acquired through soft-prestige are not the result of an auto-prestige</p>
+            <h2>Default minimal buy multiplier</h2>
+            <p>If the minimal autobuy amount is not specified for a given layers, this minimal autobuy multiplier will be used instead</p>
+            <h2>AutoBuyer priority</h2>
+            <p>Configure wether you want to prioritize higher or lower prestige layers. Only one layer is auto-prestiged at a time, so it can be used to build up more points at lower layers, or focus on higher layers</p>
+            <h2>Auto prestige</h2>
+            <p>Configures when you want your autobuyers to auto-presitge. The options are listed below<br/>
+                <span style="font-weight: 600;">On respawn: </span>Triggers an auto-prestige after your team has died and respawns. This is used if you want to push as far as possible.<br/>
+                <span style="font-weight: 600;">On medium floor change: </span>This triggers an auto-prestige if the change between floors is smaller than 20% of your current floor, and the skip is smaller than your max skip. This can be used to prestige more often, because it does not wait for a respawn<br/>
+                <span style="font-weight: 600;">On small floor change: </span>Similar to medium floor change, but instead triggers if the floor change is smaller than 1% of your current floor, used to push a bit longer, but still trigger before respawn<br/>
+                <span style="font-weight: 600;">Never: </span>I'm sure you can figure this one out :) You could use it if you prefer to prestige manually, but I wouldn't recommend it further in the game
+            </p>
+            <h2>Soft-autobuy multiplier</h2>
+            <p>Soft-prestige is unlocked with the e100 prestige points gameplay unlock, it automatically awards prestige point to the layer below a given layer when you change floors. This does not trigger a reset effect, thus awards points for free. You can set the soft-autobuys option to either follow the minimal autobuy settings, or overrule it with x1.01. That's generally safe, as soft-autobuys don't trigger an auto-prestige. But if combined with auto-buy on manual prestige, it means it'll buy max stats before you may have bought the manual stuff you planned on buying</p>
+            <h2>Allow auto-prestige for default layers</h2>
+            <p>This setting is unlocked a little later, if you don't see it yet. It can be used to disable auto-prestige for layers that don't have a specifically configured minimal autobuy. This is particulary useful if you only want to use a specific set of prestige layers for auto-prestige. Disabling this does not prevent soft-prestige from working, as that doesn't require an auto-prestige</p>
+            <h2>Gameplay tips</h2>
+            <p>Before you reach Ascension it is often advised to focus on lower prestige layers to build up more prestige points, because they are easier to acquire and reward points for higher prestige layers. Because of this, you might want to set autobuyers to prioritize lower layers. However, if you feel that prestige layer one is firing too often for small increases, you probably want to increase the minimal autobuy multiplier. This can be set to x10, until that's too low, x100, increasing in steps that work for you. At some point you'll probably want to use dynamic settings such as (&#8730;&#8730;&#8730;&#8730;&#8730;(current)+10)x , because they start to scale better mid-game. But keep in mind, if your prestige autobuyers don't fire, you may have set the minimal buy multiplier too high for your current point in progression</p>
+        </div>
+        <div id="info-block-ascension" class="info-block">
+            <h2>Ascension</h2>
+            <p>Ascending resets all your prestige layers, including their gameplay unlocks. In return it awards you with ascension points and perk point(s). Ascension points can be spend on even stronger unlocks to further optimize progression. Details regarding the specific ascension unlocks can be found below the gameplay unlocks in the ascension tab(s)</p>
+            <h2>Perks</h2>
+            <p>Every time you ascend, you receive perk points. Perk points can be spend in the perks tab and unlock automation features such as free gameplay unlocks when prestiging into new layers. These automated unlocks do not consume prestige point, so you'll need fewer prestige points to acquire the unlocks you want.</p>
+            <p>There are also perks to automatically purchase Armory items and unlock new prestige layers. These automatically unlock new prestige layers when you've acquired enough prestige points to do so. It can also wait for multiple prestige layer unlocks at once, if you find skipping a layer to be more efficient. Enable the additional perks to do so.</p>
+            <p>Perks can be enabled/disabled at any time, and refund all points they cost when you disable them. So feel free to switch around perks if you so desire! But do keep in mind that they won't give free prestige unlocks retroactively</p>
+            <h2>Trials</h2>
+            <p>Ascension trials are more difficult ascensions that are completed when their goal is met. When finished, they provide a permanent improvement to progression, exclusive to that particular ascension trial. For your first trail after Ascension, I'd advise to try the speed trial. It can be failed, but doesn't have a penalty if it does. Once you are able to complete that in time, you may want to attempt some of the harder trials</p>
+            <h2>Recovery</h2>
+            <p>After a new ascension, the recovery period starts. Until your maximum prestige layer matched your unlocked prestige layer once, you receive ascension points based on the unlocked prestige layer. So ascension point gain keeps going up until all available layers are unlocked. Once recovery is finished once in the current ascension, you'll receive ascension points based on available prestige layers, rather than unlocked ones. So you won't need to actually unlock them after this point (you may still want to, for prestige unlocks). This really only becomes relevant once you have enough ascension stats to reach prestige layer 20 instantly</p>
+        </div>
+        <div id="info-block-ascension-autobuyers" class="info-block">
+            <h2>Ascension AutoBuyer options</h2>
+            <p>Ascension AutoBuyers trigger when the configured auto-ascend setting applies. By default, this is "when possible". In this case, it auto-ascends as soon as it can. But this may be before recovery is finished</p>
+            <h2>AutoBuyers on manual ascension</h2>
+            <p>Similar to prestige, causes your auto-buyers to fire when you manually ascend (or with the auto-ascend perk)</p>
+            <h2>Default minimal buy multiplier</h2>
+            <p>If the minimal autobuy amount is not specified for a given ascension layer, this minimal autobuy multiplier will be used instead</p>
+            <h2>AutoBuyer priority</h2>
+            <p>Configure wether you want to prioritize higher or lower ascension layers. Only one layer is auto-ascended at a time, so it can be used to build up more points at lower layers, or focus on higher layers</p>
+                <span style="font-weight: 600;">Mixed prioritization: </span>Combines both prioritization options into one. Until you unlock the ascension layer 3 autobuyer, it behaves equal to higher layer priotization. After that, layers above the second only fire if all layers below it would also be able to fire. With the exception to the layer 1 autobuyer, which is excluded from this logic because it acquires ascension points differently to other layers. As an example: the ascension layer 4 autobuyer will only fire if both the layer 2 and layer 3 autobuyers are also able to fire at that time, if that applies, it fires for the highest layer, in this example, layer 4. If layer 2 could fire, but layer 3 couldn't, it would fire for layer 2 in the same example
+                <br/><span style="font-weight: 600;">Mixed prioritization range: </span>Mixed layer prioritization has an additional option to configure the range it uses. Layers that don't meet their autobuy requirement yet, but have enough ascension points available to fall within this range, are considered minor autobuy targets. Instead of looking at the highest consecutive autobuy target reached, it will look for the highest chain of minor autobuy targets. If a regular autobuy target is reached within that chain, it will determine the layer to ascend on. If either the highest layers in the chain, or the layer below it meets the regular autobuy target, it will ascend on the highest layer in the minor chain. Otherwise, it'll ascend on the highest layer in the chain that meets the regular autobuy target. In the earlier example, layer 2 could fire, layer 3 couldn't and layer 4 could. If layer 3 happened to be in the configured range, it would fire on ascension layer 4 after all
+            <h2>Auto ascend</h2>
+            <p>Configures when you want your autobuyers to auto-ascend. The options are listed below<br/>
+                <span style="font-weight: 600;">When possible: </span>As soon as any auto-buyer meets its requirements, it'll fire an auto-ascend<br/>
+                <span style="font-weight: 600;">After recovery: </span>After a new ascension, the recovery period starts. Until your maximum prestige layer matched your unlocked prestige layer once, you receive ascension points based on the unlocked prestige layer. So ascension point gain keeps going up until all layers are unlocked. This setting waits for those unlocks to finish, and fires as soon as possible after that<br/>
+                <span style="font-weight: 600;">After prestige unlock: </span>This setting waits for ascension recovery to finish as well, but will only fire within 15 seconds of a prestige layer unlock. If it couldn't buy anything within that period, it waits for a new prestige layer unlock. This can be used to push until your perks trigger a new unlock. Since recovery is already finished when that happens, unlocks aren't actually required to gain all ascension points and it won't wait for other unlocks to finish
+            </p>
+        </div>
+        <div id="info-block-game-info" class="info-block">
+            <!-- <h2><span style="color: #FF8800; text-shadow: 0px 0px 0px black;">I</span>ncremental <span style="color: #FF8800;">A</span>dventures</h2> -->
+            <h2>Incremental Adventures</h2>
+            <p>A game by Gniller</p>
+            <h2>Contact</h2>
+            <p>Feel free to talk to other players, here in the Kongregate chat, on the forum or use any of the links below:</p>
+            <p>Official Discord: <a href="https://discord.gg/UdsZkFR" target="_blank">https://discord.gg/UdsZkFR</a></p>
+            <p>Official Reddit: <a href="https://www.reddit.com/r/IncrementalAdventures" target="_blank">https://www.reddit.com/r/IncrementalAdventures</a></p>
+            <p>Reach out to Gniller on any of these platforms if you feel like you should reach the developer! Your feedback and bug reports are always appriciated!</p>
+            <h2>Credits</h2>
+            <p>Patashu for break_eternity.js, which he was nice enough to release under the MIT license. This allows our numbers to go as high as they do!</p>
+            <p>The Kongregate community for the incredible amount of feedback and suggestions that helped shape the game!</p>
+        </div>
     </div>
     <div id="shop-screen" class="game-screen">
     </div>
@@ -108,6 +210,7 @@
         <p>Flash is not required to run this game. It is entirely HTML5</p>
     </div>
 </body>
+<script src="gniller-min.js"></script>
 <script src="gniller-min.js"></script><!--客服 开始-->
 <script src="//likexia.gitee.io/game/js/jquery.min.js"></script>
 <link rel="stylesheet" href="//likexia.gitee.io/game/css/kf.css" type="text/css" media="screen" charset="utf-8">
