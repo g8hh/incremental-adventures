@@ -14,11 +14,11 @@ a {
     /* color: #FF8800; */
     color: #dd6600;
 }
-@media (max-width: 768px){
+/* @media (max-width: 768px){
     body{
-        font-size: 10px;
+        font-size: 16px;
     }
-}
+} */
 .game-screen{
     padding: 5px 0;
     min-width: 100vw;
@@ -83,6 +83,11 @@ a {
     max-width: 30%;
     /* flex: 0 0 20%; */
 }
+@media (max-width: 768px){
+    .hero-block{
+        max-width: 36%;
+    }
+}
 body.smallUnits .hero-block .hero-health, .hero-block .hero-health{
     margin: 0 -10px;
 }
@@ -119,6 +124,12 @@ body.dark .hero-block-loader{
 .hero-block>h3{
     transition: color 300ms;
 }
+.hero-block>p{
+    overflow-wrap: break-word;
+}
+.hero-block>p>span{
+    overflow-wrap: normal;
+}
 #enemies-container{
     width: 50%;
     width: calc(50% - 10px);
@@ -140,6 +151,11 @@ body.dark .hero-block-loader{
     z-index: 1;
     max-width: 30%;
     /* flex: 0 0 20%; */
+}
+@media (max-width: 768px){
+    .enemy-block{
+        max-width: 40%;
+    }
 }
 body.smallUnits .enemy-block .enemy-health, .enemy-block .enemy-health{
     margin: 0 -10px;
@@ -327,6 +343,50 @@ body.smallUnits #combat-log-13{
 body.smallUnits #combat-log-14{
     opacity: 0.95;
 }
+@media (min-height: 840px), (min-height: 700px) and (min-width: 1200px), (orientation: portrait){ /* Always extend combat log for bigger screens */
+    #combat-log-1{
+        opacity: 0.1;
+    }
+    #combat-log-2{
+        opacity: 0.15;
+    }
+    #combat-log-3{
+        opacity: 0.2;
+    }
+    #combat-log-4{
+        opacity: 0.25;
+    }
+    #combat-log-5{
+        opacity: 0.3;
+    }
+    #combat-log-6{
+        opacity: 0.35;
+    }
+    #combat-log-7{
+        opacity: 0.4;
+    }
+    #combat-log-8{
+        opacity: 0.45;
+    }
+    #combat-log-9{
+        opacity: 0.5;
+    }
+    #combat-log-10{
+        opacity: 0.6;
+    }
+    #combat-log-11{
+        opacity: 0.7;
+    }
+    #combat-log-12{
+        opacity: 0.8;
+    }
+    #combat-log-13{
+        opacity: 0.9;
+    }
+    #combat-log-14{
+        opacity: 0.95;
+    }
+}
 .combat-log-record{
     margin: 0;
     padding: 1px 5px;
@@ -345,6 +405,9 @@ body.smallUnits #combat-log-14{
 }
 #top-menu-battlefield-button{
     display: none;
+}
+.top-menu-button.button-locked{
+    opacity: 0.5;
 }
 #top-menu-prestige-button{
     display: none;
@@ -470,6 +533,10 @@ body.dark .ascension-menu-button.active{
 .ascension-upgrade-button{
     padding: 5px 15px;
 }
+.armory-line{
+    display: inline-block;
+    width: 100%;
+}
 .armory-upgrade-button{
     padding: 5px 15px;
     display: inline-block;
@@ -525,9 +592,6 @@ body.dark #offline-progress-info{
     font-weight: 600;
     border: 1px solid #eeeeee;
 }
-#trials-table tr:nth-child(even){
-    /* background-color: #eeeeee; */
-}
 #trials-table td, #trials-table th{
     padding: 7.5px;
     border: 1px solid #eeeeee;
@@ -535,11 +599,31 @@ body.dark #offline-progress-info{
 #trials-table, .prestige-upgrade-button>p{
     margin: 7.5px 0;
 }
+#autobuyer-presets-table{
+    display: inline-block;
+    text-align: center;
+    border-collapse: collapse;
+    margin-top: 15px;
+    font-size: 14px;
+}
+#autobuyer-presets-table th{
+    font-weight: 600;
+    border: 1px solid #eeeeee;
+}
+#autobuyer-presets-table td, #autobuyer-presets-table th{
+    padding: 7.5px;
+    border: 1px solid #eeeeee;
+}
+#autobuyer-presets-table, .prestige-upgrade-button>p{
+    margin: 7.5px 0;
+}
 #stats-table{
     display: block;
     text-align: center;
     font-size: 14px;
     line-height: 14px;
+    padding-left: 15px;
+    margin: 0 -7.5px;
 }
 #stats-table>tbody{
     display: inline-block;
@@ -564,4 +648,13 @@ body.dark #offline-progress-info{
     display: none;
     padding: 0 15px;
     padding-bottom: 25px;
+}
+#next-prestige-percentage-text{
+    white-space: nowrap;
+}
+#next-ascension-percentage-text{
+    white-space: nowrap;
+}
+.stats-line{
+    white-space: nowrap;
 }

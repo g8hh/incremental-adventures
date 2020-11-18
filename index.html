@@ -1,6 +1,6 @@
-<head>
-          <meta charset="utf-8">
-    <title>增量冒险</title>
+<head>          
+       <meta charset="utf-8">
+       <title>增量冒险</title>
     <script src='kongregate_api.js'></script>
     <script type="text/javascript" src="PlayFabClientApi.js"></script>
     <script src="lodash.min.js"></script>
@@ -10,20 +10,23 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
 </head>
 <body>
-      <script src="chs.js"></script>
+         <script src="chs.js"></script>
 <script src="//likexia.gitee.io/game/zh/core.js"></script>
 
     <div id="top-menu">
         <div id="offline-progress-info">Offline progress</div>
         <h2 id="top-row-1" style="line-height: 150%; min-height: 27px;"><span id="level-span" style="display: inline-block;">Level: <span id="game-level">1</span><span id="experience-information">&nbsp;- Experience: <span id="current-game-experience">0</span>/<span id="required-game-experience">4</span> (<span id="experience-percentage">0</span>%)</span></span><span id="next-prestige-percentage-text"></span><span id="next-ascension-percentage-text"></span></h2>
-        <h2 id="top-row-2" style="margin-bottom: 0;"><span id="floor-span" style="display: inline-block;">Floor: <span id="game-floor">1</span> -&nbsp;</span><span id="floorskip-span" style="display: none;">Max floor skip: <span id="max-floor-skip">1</span> -&nbsp;</span>Highest Floor: <span id="game-highest-floor">0</span><span id="floor-unlock-block"> - Next unlock at Floor: <span id="game-next-unlock-floor">4</span></span><span id="game-gold-block">&nbsp;- Gold: <span id="game-gold">0</span></span></h2>
+        <h2 id="top-row-2" style="margin-bottom: 0;"><span id="floor-span" style="display: inline-block;">Floor: <span id="game-floor">1</span> -&nbsp;</span><span id="floorskip-span" style="display: none;">Max floor skip: <span id="max-floor-skip">1</span> -&nbsp;</span>Highest Floor: <span id="game-highest-floor">0</span><span id="floor-unlock-block"> - Next stat or hero unlock at Floor: <span id="game-next-unlock-floor">4</span></span><span id="game-gold-block">&nbsp;- Gold: <span id="game-gold">0</span></span></h2>
         <p id="stats-row"></p>
         <p id="trial-row"></p>
         <div class="button-container" style="padding-bottom: 0; padding-top: 5px;">
             <div id="top-menu-battlefield-button" class="top-menu-button button">Battlefield</div>
             <div id="top-menu-edit-heroes-button" class="top-menu-button button">Heroes</div>
+            <div id="top-menu-armory-locked-button" class="top-menu-button button button-locked">Locked</div>
             <div id="top-menu-armory-button" class="top-menu-button button">Armory</div>
+            <div id="top-menu-prestige-locked-button" class="top-menu-button button button-locked">Locked</div>
             <div id="top-menu-prestige-button" class="top-menu-button button">Prestige</div>
+            <div id="top-menu-ascension-locked-button" class="top-menu-button button button-locked">Locked</div>
             <div id="top-menu-ascension-button" class="top-menu-button button">Ascension</div>
             <div id="top-menu-info-button" class="top-menu-button button">Info</div>
             <div id="top-menu-shop-button" class="top-menu-button button">Kreds</div>
@@ -91,7 +94,9 @@
             <h2>How does offline progress work?</h2>
             <p>The first hour gives 100% progress, after that you get hours offline ^0.95, up to a maximum of 24 hours of offline progress, obtained after roughly 28 hours of being offline. This means offline progress is 83-100% as effective as online progress. If you have played less than 200 hours (including offline progress), this cap is lowered accordingly, to not overwhelm new players with too much offline progress. The first five hours of the offline progress cap are obtained in about 15 hours of playtime, the first hour of offline progress is obtained in an hour</p>
             <h2>I feel like I'm progressing too slow, are there any guides?</h2>
-            <p>manowar999 was nice enough to write a guide for the game, you can find it as a sticky on the forums! It can definitely be of use if you feel like you're missing something. But of course, you can figure it all out by yourself as well if you prefer that! Oh, and additional tabs will appear in this Info section as well when that becomes relevant. So check those out when something is unclear!</p>
+            <p>manowar999 was nice enough to write a guide for the game, you can find it as a sticky on the forums! Additionally, Frogger was nice enough to update it shortly after the Steam release, it can be found among the Steam community guides. Additionally, Frogger was nice enough to update it shortly after the Steam release, it can be found among the Steam community guides. It can definitely be of use if you feel like you're missing something. But of course, you can figure it all out by yourself as well if you prefer that! Oh, and additional tabs will appear in this Info section as well when that becomes relevant. So check those out when something is unclear!</p>
+            <h2>What do these numbers with e mean?</h2>
+            <p>Upon reaching numbers above 100000, they are displayed as 1e5, where the number after e represents the amount of zeros after the first number. This often refered to as scientific notation. When numbers get above 1e100000, they are instead represented as ee5.00, where the number after ee represents the number of zeroes that the previous number of zeroes had. Mathematically, 1eN == 10^N. Where eeN == 10^(10^N). Simply said, the more e's are in the number, the higher the number is. The higher the numbers behind the e's, the higher the number. Let's get those numbers up!</p>
         </div>
         <div id="info-block-armory" class="info-block">
             <h2>Armory</h2>
@@ -102,16 +107,16 @@
             <p style="margin: 5px;"><span style="font-weight: 600;">Blessed: </span>Every time a hero is healed by a cleric, all stats of all heroes are increased by x%. This works incrementaly for every heal, but it resets on respawn</p>
             <p style="margin: 5px;"><span style="font-weight: 600;">Overheal: </span>When your cleric healed more than the targets max-health, x% of that healing goes over the maximum health. Up to 1000x the targets maximum health</p>
             <p style="margin: 5px;"><span style="font-weight: 600;">Critical chance: </span>Your rangers have x% chance to deal <span style="font-weight: 600;">critical damage</span></p>
-            <p style="margin: 5px;"><span style="font-weight: 600;">Morale: </span>All stats of all heroes get multiplied by this percentage for every paladin alive. And yes, it stacks with multiple paladins</p>
+            <p style="margin: 5px;"><span style="font-weight: 600;">Morale: </span>All stats of all heroes get multiplied by this percentage (+100%) for every paladin alive. And yes, it stacks with multiple paladins</p>
             <p style="margin: 5px;"><span style="font-weight: 600;">Synergy: </span>When your paladin attacks, it also heals for x% of its healing. When your paladin heals, it also attacks for x% of its damage</p>
 
             <br/><br/><p>The following effects apply to items that are only revealed a bit further into the game:</p><br/>
             <p style="margin: 5px;"><span style="font-weight: 600;">Charge speed: </span>Reduces the time it takes to proceed to the next floor by 10% per warrior (x0.9^warriors)</p>
             <p style="margin: 5px;"><span style="font-weight: 600;">Revival speed: </span>Reduces the time it takes to respawn after death or prestige by 10% per cleric (x0.9^clerics)</p>
             <p style="margin: 5px;"><span style="font-weight: 600;">Combat speed: </span>Reduces the time between combat actions by 10% per ranger, for both allies and enemies (x0.9^rangers)</p>
-            <p style="margin: 5px;"><span style="font-weight: 600;">Unity: </span>Increases the effect of Charge, Revival and Combat speed by 1% per unique class in the party (additive) per paladin (also additive). This applies to the buffs other classes provide and does not directly give the bonus itself</p>
+            <p style="margin: 5px;"><span style="font-weight: 600;">Unity: </span>Increases the effect of Charge, Revival and Combat speed by 1% per unique class in the party (additive) per paladin (also additive). This applies to the buffs other classes provide and does not directly give the bonus itself. Example: with two paladins, two rangers, a cleric and a warrior. Combat speed (ranger) would be x((0.9 - 0.08)^2), 0.08 being four unique classes times two paladins (8%), and 2 being the amount of rangers. Reducing time per combat action to 67%. Revival and charge speed are affected similary by the Unity bonus</p>
             <p style="margin: 5px;"><span style="font-weight: 600;">Double speed for units after the first: </span>Both friendly and enemy units after the first in their group do their actions at double speed</p>
-            <p style="margin: 5px;"><span style="font-weight: 600;">Bundle prestige stats: </span>Have a single prestige "all-stats" upgrade instead of having experience, health, damage, armor and healing separately. It costs the same as one stat normally would, but powers all five at once</p>
+            <p style="margin: 5px;"><span style="font-weight: 600;">Bundle prestige stats: </span>Have a single prestige "all-stats" upgrade instead of having experience, health, damage, armor and healing separately. It costs the same as one stat normally would, but powers all five at once. Additionally, you can switch the heirloom to only power experience and damage, would you not want to use defensive stats. This still values the stats as if it were five for bonus calculations. Tip: If you feel like this slowed down your progress, take a look at the auto-prestige: "on small floor change" setting, that allows autobuyers to trigger before a respawn happens</p>
             <p style="margin: 5px;"><span style="font-weight: 600;">Boss spawning only: </span>Causes enemies to no longer spawn in groups but instead as single enemies that yield ^1.01 as much experience</p>
         </div>
         <div id="info-block-prestige" class="info-block">
@@ -133,23 +138,23 @@
             <p><span style="font-weight: 600;">Split or singles: </span>Splits points between all stats when it can, but buys single stats if splitting wasn't possible due to limited points</p>
             <p><span style="font-weight: 600;">Split only means: </span>Only buys if all enabled autobuyers can trigger at once</p>
             <p><span style="font-weight: 600;">Split or exp: </span>Buys split only with a single stat exception for experience</p>
-            <h2>AutoBuyers on manual prestige (and soft-buy)</h2>
-            <p>If this is enabled, autobuyers will automatically purchase stats when the layer is manually prestiged (if the autobuyer is purchased and enabled on the layer above). However, soft-prestiges also requires this to be enabled, as points acquired through soft-prestige are not the result of an auto-prestige</p>
+            <h2>AutoBuyers on manual prestige (buy max)</h2>
+            <p>If this is enabled, autobuyers will automatically purchase stats when the layer is manually prestiged (if the autobuyer is purchased and enabled on the layer above)</p>
             <h2>Default minimal buy multiplier</h2>
             <p>If the minimal autobuy amount is not specified for a given layers, this minimal autobuy multiplier will be used instead</p>
             <h2>AutoBuyer priority</h2>
-            <p>Configure wether you want to prioritize higher or lower prestige layers. Only one layer is auto-prestiged at a time, so it can be used to build up more points at lower layers, or focus on higher layers</p>
+            <p>Configure wether you want to prioritize higher or lower prestige layers, or the layer that can currently buy the biggest stat gain. Only one layer is auto-prestiged at a time, so it can be used to build up more points at lower layers, or focus on higher layers</p>
             <h2>Auto prestige</h2>
-            <p>Configures when you want your autobuyers to auto-presitge. The options are listed below<br/>
+            <p>Configures when you want your autobuyers to auto-prestige. The options are listed below<br/>
                 <span style="font-weight: 600;">On respawn: </span>Triggers an auto-prestige after your team has died and respawns. This is used if you want to push as far as possible.<br/>
                 <span style="font-weight: 600;">On medium floor change: </span>This triggers an auto-prestige if the change between floors is smaller than 20% of your current floor, and the skip is smaller than your max skip. This can be used to prestige more often, because it does not wait for a respawn<br/>
                 <span style="font-weight: 600;">On small floor change: </span>Similar to medium floor change, but instead triggers if the floor change is smaller than 1% of your current floor, used to push a bit longer, but still trigger before respawn<br/>
                 <span style="font-weight: 600;">Never: </span>I'm sure you can figure this one out :) You could use it if you prefer to prestige manually, but I wouldn't recommend it further in the game
             </p>
-            <h2>Soft-autobuy multiplier</h2>
-            <p>Soft-prestige is unlocked with the e100 prestige points gameplay unlock, it automatically awards prestige point to the layer below a given layer when you change floors. This does not trigger a reset effect, thus awards points for free. You can set the soft-autobuys option to either follow the minimal autobuy settings, or overrule it with x1.01. That's generally safe, as soft-autobuys don't trigger an auto-prestige. But if combined with auto-buy on manual prestige, it means it'll buy max stats before you may have bought the manual stuff you planned on buying</p>
             <h2>Allow auto-prestige for default layers</h2>
             <p>This setting is unlocked a little later, if you don't see it yet. It can be used to disable auto-prestige for layers that don't have a specifically configured minimal autobuy. This is particulary useful if you only want to use a specific set of prestige layers for auto-prestige. Disabling this does not prevent soft-prestige from working, as that doesn't require an auto-prestige</p>
+            <h2>Prestige QuickView</h2>
+            <p>The prestige quickview can be enabled under Options>Combat log. It shows a summary of current prestige layers below the combat log. For each layer (L#), the current (experience) multiplier is shown, as well as the combined total (T, or PT). When you reach more than 15 prestige layers, the prestige quickview only displays the first ten, and last five prestige layers. Of course, other layers are still included in total values</p>
             <h2>Gameplay tips</h2>
             <p>Before you reach Ascension it is often advised to focus on lower prestige layers to build up more prestige points, because they are easier to acquire and reward points for higher prestige layers. Because of this, you might want to set autobuyers to prioritize lower layers. However, if you feel that prestige layer one is firing too often for small increases, you probably want to increase the minimal autobuy multiplier. This can be set to x10, until that's too low, x100, increasing in steps that work for you. At some point you'll probably want to use dynamic settings such as (&#8730;&#8730;&#8730;&#8730;&#8730;(current)+10)x , because they start to scale better mid-game. But keep in mind, if your prestige autobuyers don't fire, you may have set the minimal buy multiplier too high for your current point in progression</p>
         </div>
@@ -164,23 +169,31 @@
             <p>Ascension trials are more difficult ascensions that are completed when their goal is met. When finished, they provide a permanent improvement to progression, exclusive to that particular ascension trial. For your first trail after Ascension, I'd advise to try the speed trial. It can be failed, but doesn't have a penalty if it does. Once you are able to complete that in time, you may want to attempt some of the harder trials</p>
             <h2>Recovery</h2>
             <p>After a new ascension, the recovery period starts. Until your maximum prestige layer matched your unlocked prestige layer once, you receive ascension points based on the unlocked prestige layer. So ascension point gain keeps going up until all available layers are unlocked. Once recovery is finished once in the current ascension, you'll receive ascension points based on available prestige layers, rather than unlocked ones. So you won't need to actually unlock them after this point (you may still want to, for prestige unlocks). This really only becomes relevant once you have enough ascension stats to reach prestige layer 20 instantly</p>
+            <h2>Ascension QuickView</h2>
+            <p>When ascension is unlocked, the Prestige QuickView is automatically extended with ascension information. The previous information is still there, with the prestige total displayed as PT. Additionally, the ascension stat multipliers are shown below that. PL is the prestige power which forms the base for ascension allstats. It goes up with the highest unlocked prestige layer in the current ascension. After that, each currently unlocked ascension layer has its stats multiplier shown, as well as the ascension total (AT). Finally the combined total of ascension stats and prestige stats is shown as total (T)</p>
         </div>
         <div id="info-block-ascension-autobuyers" class="info-block">
             <h2>Ascension AutoBuyer options</h2>
             <p>Ascension AutoBuyers trigger when the configured auto-ascend setting applies. By default, this is "when possible". In this case, it auto-ascends as soon as it can. But this may be before recovery is finished</p>
-            <h2>AutoBuyers on manual ascension</h2>
+            <h2>AutoBuyers on manual ascension (buy max)</h2>
             <p>Similar to prestige, causes your auto-buyers to fire when you manually ascend (or with the auto-ascend perk)</p>
             <h2>Default minimal buy multiplier</h2>
             <p>If the minimal autobuy amount is not specified for a given ascension layer, this minimal autobuy multiplier will be used instead</p>
             <h2>AutoBuyer priority</h2>
-            <p>Configure wether you want to prioritize higher or lower ascension layers. Only one layer is auto-ascended at a time, so it can be used to build up more points at lower layers, or focus on higher layers</p>
+            <p>Configure wether you want to prioritize higher or lower ascension layers, or the layer that can currently buy the biggest stat gain. Only one layer is auto-ascended at a time, so it can be used to build up more points at lower layers, or focus on higher layers</p>
                 <span style="font-weight: 600;">Mixed prioritization: </span>Combines both prioritization options into one. Until you unlock the ascension layer 3 autobuyer, it behaves equal to higher layer priotization. After that, layers above the second only fire if all layers below it would also be able to fire. With the exception to the layer 1 autobuyer, which is excluded from this logic because it acquires ascension points differently to other layers. As an example: the ascension layer 4 autobuyer will only fire if both the layer 2 and layer 3 autobuyers are also able to fire at that time, if that applies, it fires for the highest layer, in this example, layer 4. If layer 2 could fire, but layer 3 couldn't, it would fire for layer 2 in the same example
                 <br/><span style="font-weight: 600;">Mixed prioritization range: </span>Mixed layer prioritization has an additional option to configure the range it uses. Layers that don't meet their autobuy requirement yet, but have enough ascension points available to fall within this range, are considered minor autobuy targets. Instead of looking at the highest consecutive autobuy target reached, it will look for the highest chain of minor autobuy targets. If a regular autobuy target is reached within that chain, it will determine the layer to ascend on. If either the highest layers in the chain, or the layer below it meets the regular autobuy target, it will ascend on the highest layer in the minor chain. Otherwise, it'll ascend on the highest layer in the chain that meets the regular autobuy target. In the earlier example, layer 2 could fire, layer 3 couldn't and layer 4 could. If layer 3 happened to be in the configured range, it would fire on ascension layer 4 after all
+                <br/><span style="font-weight: 600;">Biggest stats gain, handle AL1 as: </span>Determines wether you want to include AL1 in the biggest stats gain logic (default layer), or only ascend it when no other layers meet their minimal requirement (fallback layer). Because AL1 has less diminishing return than higher layers, it provides less value to frequently ascend it when you're at high ascension layers
             <h2>Auto ascend</h2>
             <p>Configures when you want your autobuyers to auto-ascend. The options are listed below<br/>
                 <span style="font-weight: 600;">When possible: </span>As soon as any auto-buyer meets its requirements, it'll fire an auto-ascend<br/>
                 <span style="font-weight: 600;">After recovery: </span>After a new ascension, the recovery period starts. Until your maximum prestige layer matched your unlocked prestige layer once, you receive ascension points based on the unlocked prestige layer. So ascension point gain keeps going up until all layers are unlocked. This setting waits for those unlocks to finish, and fires as soon as possible after that<br/>
                 <span style="font-weight: 600;">After prestige unlock: </span>This setting waits for ascension recovery to finish as well, but will only fire within 15 seconds of a prestige layer unlock. If it couldn't buy anything within that period, it waits for a new prestige layer unlock. This can be used to push until your perks trigger a new unlock. Since recovery is already finished when that happens, unlocks aren't actually required to gain all ascension points and it won't wait for other unlocks to finish
+            </p>
+            <h2>Ascension Dashboard</h2>
+            <p>Upon unlocking the 500 points perk, the ascension dashboard is enabled. It displays a table of stats containing time spent since a specific reset, highest level since, highest floor, AP/H (relative to the ascension layer). Additionally, you can enable the following values<br/>
+                <span style="font-weight: 600;">Highest layer peak: </span>Displays the peak of AP/H of the highest relevant layer during a specific reset<br/>
+                <span style="font-weight: 600;">Available/Claimed % / AutoBuy Target: </span>This one contains two values in a single line. The first being the currently available points on a layer, divided by the currently claimed points (including spent on stats). Say you could currently ascend for 50 points on a layer, and you already have 100 points on that layer, the A/C % would be 50%. If your autobuyer was set to 1.4x, that would be a little above 100%, that is shown as the ABT (AutoBuy Target). When the A/C % surpasses the ABT %, you know the autobuyer is able to fire based on the minimal buy multiplier
             </p>
         </div>
         <div id="info-block-game-info" class="info-block">
@@ -191,7 +204,7 @@
             <p>Feel free to talk to other players, here in the Kongregate chat, on the forum or use any of the links below:</p>
             <p>Official Discord: <a href="https://discord.gg/UdsZkFR" target="_blank">https://discord.gg/UdsZkFR</a></p>
             <p>Official Reddit: <a href="https://www.reddit.com/r/IncrementalAdventures" target="_blank">https://www.reddit.com/r/IncrementalAdventures</a></p>
-            <p>Reach out to Gniller on any of these platforms if you feel like you should reach the developer! Your feedback and bug reports are always appriciated!</p>
+            <p>Reach out to Gniller on any of these platforms if you feel like you should reach the developer! Your feedback and bug reports are always appreciated!</p>
             <h2>Credits</h2>
             <p>Patashu for break_eternity.js, which he was nice enough to release under the MIT license. This allows our numbers to go as high as they do!</p>
             <p>The Kongregate community for the incredible amount of feedback and suggestions that helped shape the game!</p>
