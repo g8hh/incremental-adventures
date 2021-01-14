@@ -27,9 +27,9 @@ a {
     display: none;
 }
 #top-menu{
-    padding: 5px;
+    padding: 5px 0;
     width: 100vw;
-    width: calc(100% - 10px);
+    width: calc(100% - 2.5px);
     text-align: center;
     border-bottom: 3px solid grey;
 }
@@ -398,7 +398,7 @@ body.smallUnits #combat-log-14{
     justify-content: center;
     align-content: center;
     flex-flow: wrap;
-    padding: 15px;
+    padding: 0px;
 }
 .top-menu-button{
     display: inline-block;
@@ -413,6 +413,9 @@ body.smallUnits #combat-log-14{
     display: none;
 }
 #top-menu-ascension-button{
+    display: none;
+}
+#top-menu-transcension-button{
     display: none;
 }
 #top-menu-shop-button{
@@ -448,6 +451,9 @@ body.smallUnits #combat-log-14{
 #ascension-screen{
     padding-top: 0;
 }
+#transcension-screen{
+    padding-top: 0;
+}
 #info-screen{
     padding-top: 0;
 }
@@ -463,6 +469,14 @@ body.smallUnits #combat-log-14{
     border-bottom: 2px solid grey;
 }
 #ascension-menu{
+    display: none;
+    justify-content: center;
+    align-content: center;
+    flex-flow: wrap;
+    padding: 5px;
+    border-bottom: 2px solid grey;
+}
+#transcension-menu{
     display: none;
     justify-content: center;
     align-content: center;
@@ -515,6 +529,10 @@ body.smallUnits #combat-log-14{
     display: none;
     padding: 15px;
 }
+.transcension-block{
+    display: none;
+    padding: 15px;
+}
 .prestige-menu-button.active{
     background-color: #eeeeee;
 }
@@ -531,6 +549,15 @@ body.dark .ascension-menu-button.active{
     background-color: #222222;
 }
 .ascension-upgrade-button{
+    padding: 5px 15px;
+}
+.transcension-menu-button.active{
+    background-color: #eeeeee;
+}
+body.dark .transcension-menu-button.active{
+    background-color: #222222;
+}
+.transcension-upgrade-button{
     padding: 5px 15px;
 }
 .armory-line{
@@ -599,6 +626,24 @@ body.dark #offline-progress-info{
 #trials-table, .prestige-upgrade-button>p{
     margin: 7.5px 0;
 }
+#transcension-perks-table {
+    display: inline-block;
+    text-align: center;
+    border-collapse: collapse;
+    margin-top: 15px;
+    font-size: 14px;
+}
+#transcension-perks-table th{
+    font-weight: 600;
+    border: 1px solid #eeeeee;
+}
+#transcension-perks-table td, #transcension-perks-table th{
+    padding: 7.5px;
+    border: 1px solid #eeeeee;
+}
+#transcension-perks-table, .prestige-upgrade-button>p{
+    margin: 7.5px 0;
+}
 #autobuyer-presets-table{
     display: inline-block;
     text-align: center;
@@ -651,9 +696,18 @@ body.dark #offline-progress-info{
 }
 #next-prestige-percentage-text{
     white-space: nowrap;
+    display: inline-block;
+    margin-left: 5px;
 }
 #next-ascension-percentage-text{
     white-space: nowrap;
+    display: inline-block;
+    margin-left: 5px;
+}
+#next-transcension-percentage-text{
+    white-space: nowrap;
+    display: inline-block;
+    margin-left: 5px;
 }
 .stats-line{
     white-space: nowrap;

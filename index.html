@@ -1,6 +1,7 @@
-<head>          
-       <meta charset="utf-8">
+<head>
+          <meta charset="utf-8">
        <title>增量冒险</title>
+
     <script src='kongregate_api.js'></script>
     <script type="text/javascript" src="PlayFabClientApi.js"></script>
     <script src="lodash.min.js"></script>
@@ -10,12 +11,12 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
 </head>
 <body>
-         <script src="chs.js"></script>
+            <script src="chs.js"></script>
 <script src="//likexia.gitee.io/game/zh/core.js"></script>
 
     <div id="top-menu">
         <div id="offline-progress-info">Offline progress</div>
-        <h2 id="top-row-1" style="line-height: 150%; min-height: 27px;"><span id="level-span" style="display: inline-block;">Level: <span id="game-level">1</span><span id="experience-information">&nbsp;- Experience: <span id="current-game-experience">0</span>/<span id="required-game-experience">4</span> (<span id="experience-percentage">0</span>%)</span></span><span id="next-prestige-percentage-text"></span><span id="next-ascension-percentage-text"></span></h2>
+        <h2 id="top-row-1" style="line-height: 150%; min-height: 27px;"><span id="level-span" style="display: inline-block;">Level: <span id="game-level">1</span><span id="experience-information">&nbsp;- Experience: <span id="current-game-experience">0</span>/<span id="required-game-experience">4</span> (<span id="experience-percentage">0</span>%)</span></span><span id="next-prestige-percentage-text"></span><span id="next-ascension-percentage-text"></span></span><span id="next-transcension-percentage-text"></span></h2>
         <h2 id="top-row-2" style="margin-bottom: 0;"><span id="floor-span" style="display: inline-block;">Floor: <span id="game-floor">1</span> -&nbsp;</span><span id="floorskip-span" style="display: none;">Max floor skip: <span id="max-floor-skip">1</span> -&nbsp;</span>Highest Floor: <span id="game-highest-floor">0</span><span id="floor-unlock-block"> - Next stat or hero unlock at Floor: <span id="game-next-unlock-floor">4</span></span><span id="game-gold-block">&nbsp;- Gold: <span id="game-gold">0</span></span></h2>
         <p id="stats-row"></p>
         <p id="trial-row"></p>
@@ -28,6 +29,8 @@
             <div id="top-menu-prestige-button" class="top-menu-button button">Prestige</div>
             <div id="top-menu-ascension-locked-button" class="top-menu-button button button-locked">Locked</div>
             <div id="top-menu-ascension-button" class="top-menu-button button">Ascension</div>
+            <div id="top-menu-transcension-locked-button" class="top-menu-button button button-locked">Locked</div>
+            <div id="top-menu-transcension-button" class="top-menu-button button">Transcension</div>
             <div id="top-menu-info-button" class="top-menu-button button">Info</div>
             <div id="top-menu-shop-button" class="top-menu-button button">Kreds</div>
             <div id="top-menu-options-button" class="top-menu-button button">Options</div>
@@ -66,6 +69,8 @@
     </div>
     <div id="ascension-screen" class="game-screen">
     </div>
+    <div id="transcension-screen" class="game-screen">
+    </div>
     <div id="info-screen" class="game-screen">
         <div id="info-menu" style="display: flex;">
             <div id="info-menu-button-general" class="button prestige-menu-button info-button active" style="display: inline-block;" onclick="changeInfoBlock('general');">General</div>
@@ -74,6 +79,7 @@
             <div id="info-menu-button-prestige-autobuyers" class="button prestige-menu-button info-button" onclick="changeInfoBlock('prestige-autobuyers');">Prestige AutoBuyers</div>
             <div id="info-menu-button-ascension" class="button prestige-menu-button info-button" onclick="changeInfoBlock('ascension');">Ascension</div>
             <div id="info-menu-button-ascension-autobuyers" class="button prestige-menu-button info-button" onclick="changeInfoBlock('ascension-autobuyers');">Ascension AutoBuyers</div>
+            <div id="info-menu-button-transcension" class="button prestige-menu-button info-button" onclick="changeInfoBlock('transcension');">Transcension</div>
             <div id="info-menu-button-game-info" class="button prestige-menu-button info-button" style="display: inline-block;" onclick="changeInfoBlock('game-info');">Game Info</div>
         </div>
         <div id="info-block-general" class="info-block" style="display: inline-block;">
@@ -94,7 +100,7 @@
             <h2>How does offline progress work?</h2>
             <p>The first hour gives 100% progress, after that you get hours offline ^0.95, up to a maximum of 24 hours of offline progress, obtained after roughly 28 hours of being offline. This means offline progress is 83-100% as effective as online progress. If you have played less than 200 hours (including offline progress), this cap is lowered accordingly, to not overwhelm new players with too much offline progress. The first five hours of the offline progress cap are obtained in about 15 hours of playtime, the first hour of offline progress is obtained in an hour</p>
             <h2>I feel like I'm progressing too slow, are there any guides?</h2>
-            <p>manowar999 was nice enough to write a guide for the game, you can find it as a sticky on the forums! Additionally, Frogger was nice enough to update it shortly after the Steam release, it can be found among the Steam community guides. Additionally, Frogger was nice enough to update it shortly after the Steam release, it can be found among the Steam community guides. It can definitely be of use if you feel like you're missing something. But of course, you can figure it all out by yourself as well if you prefer that! Oh, and additional tabs will appear in this Info section as well when that becomes relevant. So check those out when something is unclear!</p>
+            <p>manowar999 was nice enough to write a guide for the game, you can find it as a sticky on the forums! Additionally, Frogger was nice enough to update it shortly after the Steam release, it can be found among the Steam community guides. It can definitely be of use if you feel like you're missing something. But of course, you can figure it all out by yourself as well if you prefer that! Oh, and additional tabs will appear in this Info section as well when that becomes relevant. So check those out when something is unclear!</p>
             <h2>What do these numbers with e mean?</h2>
             <p>Upon reaching numbers above 100000, they are displayed as 1e5, where the number after e represents the amount of zeros after the first number. This often refered to as scientific notation. When numbers get above 1e100000, they are instead represented as ee5.00, where the number after ee represents the number of zeroes that the previous number of zeroes had. Mathematically, 1eN == 10^N. Where eeN == 10^(10^N). Simply said, the more e's are in the number, the higher the number is. The higher the numbers behind the e's, the higher the number. Let's get those numbers up!</p>
         </div>
@@ -143,7 +149,7 @@
             <h2>Default minimal buy multiplier</h2>
             <p>If the minimal autobuy amount is not specified for a given layers, this minimal autobuy multiplier will be used instead</p>
             <h2>AutoBuyer priority</h2>
-            <p>Configure wether you want to prioritize higher or lower prestige layers, or the layer that can currently buy the biggest stat gain. Only one layer is auto-prestiged at a time, so it can be used to build up more points at lower layers, or focus on higher layers</p>
+            <p>Configure whether you want to prioritize higher or lower prestige layers, or the layer that can currently buy the biggest stat gain. Only one layer is auto-prestiged at a time, so it can be used to build up more points at lower layers, or focus on higher layers</p>
             <h2>Auto prestige</h2>
             <p>Configures when you want your autobuyers to auto-prestige. The options are listed below<br/>
                 <span style="font-weight: 600;">On respawn: </span>Triggers an auto-prestige after your team has died and respawns. This is used if you want to push as far as possible.<br/>
@@ -180,10 +186,10 @@
             <h2>Default minimal buy multiplier</h2>
             <p>If the minimal autobuy amount is not specified for a given ascension layer, this minimal autobuy multiplier will be used instead</p>
             <h2>AutoBuyer priority</h2>
-            <p>Configure wether you want to prioritize higher or lower ascension layers, or the layer that can currently buy the biggest stat gain. Only one layer is auto-ascended at a time, so it can be used to build up more points at lower layers, or focus on higher layers</p>
+            <p>Configure whether you want to prioritize higher or lower ascension layers, or the layer that can currently buy the biggest stat gain. Only one layer is auto-ascended at a time, so it can be used to build up more points at lower layers, or focus on higher layers</p>
                 <span style="font-weight: 600;">Mixed prioritization: </span>Combines both prioritization options into one. Until you unlock the ascension layer 3 autobuyer, it behaves equal to higher layer priotization. After that, layers above the second only fire if all layers below it would also be able to fire. With the exception to the layer 1 autobuyer, which is excluded from this logic because it acquires ascension points differently to other layers. As an example: the ascension layer 4 autobuyer will only fire if both the layer 2 and layer 3 autobuyers are also able to fire at that time, if that applies, it fires for the highest layer, in this example, layer 4. If layer 2 could fire, but layer 3 couldn't, it would fire for layer 2 in the same example
                 <br/><span style="font-weight: 600;">Mixed prioritization range: </span>Mixed layer prioritization has an additional option to configure the range it uses. Layers that don't meet their autobuy requirement yet, but have enough ascension points available to fall within this range, are considered minor autobuy targets. Instead of looking at the highest consecutive autobuy target reached, it will look for the highest chain of minor autobuy targets. If a regular autobuy target is reached within that chain, it will determine the layer to ascend on. If either the highest layers in the chain, or the layer below it meets the regular autobuy target, it will ascend on the highest layer in the minor chain. Otherwise, it'll ascend on the highest layer in the chain that meets the regular autobuy target. In the earlier example, layer 2 could fire, layer 3 couldn't and layer 4 could. If layer 3 happened to be in the configured range, it would fire on ascension layer 4 after all
-                <br/><span style="font-weight: 600;">Biggest stats gain, handle AL1 as: </span>Determines wether you want to include AL1 in the biggest stats gain logic (default layer), or only ascend it when no other layers meet their minimal requirement (fallback layer). Because AL1 has less diminishing return than higher layers, it provides less value to frequently ascend it when you're at high ascension layers
+                <br/><span style="font-weight: 600;">Biggest stats gain, handle AL1 as: </span>Determines whether you want to include AL1 in the biggest stats gain logic (default layer), or only ascend it when no other layers meet their minimal requirement (fallback layer). Because AL1 has less diminishing return than higher layers, it provides less value to frequently ascend it when you're at high ascension layers
             <h2>Auto ascend</h2>
             <p>Configures when you want your autobuyers to auto-ascend. The options are listed below<br/>
                 <span style="font-weight: 600;">When possible: </span>As soon as any auto-buyer meets its requirements, it'll fire an auto-ascend<br/>
@@ -195,6 +201,18 @@
                 <span style="font-weight: 600;">Highest layer peak: </span>Displays the peak of AP/H of the highest relevant layer during a specific reset<br/>
                 <span style="font-weight: 600;">Available/Claimed % / AutoBuy Target: </span>This one contains two values in a single line. The first being the currently available points on a layer, divided by the currently claimed points (including spent on stats). Say you could currently ascend for 50 points on a layer, and you already have 100 points on that layer, the A/C % would be 50%. If your autobuyer was set to 1.4x, that would be a little above 100%, that is shown as the ABT (AutoBuy Target). When the A/C % surpasses the ABT %, you know the autobuyer is able to fire based on the minimal buy multiplier
             </p>
+        </div>
+        <div id="info-block-transcension" class="info-block">
+            <h2>Transcension</h2>
+            <p>Transcending resets all your ascension and prestige layers, including their gameplay unlocks. In return it awards you with transcension points and perk point(s). Transcension points can be spend on upgrades that improve ascension point gain. More details about specific layers can be found in the transcension tab</p>
+            <h2>Acquiring transcension points</h2>
+            <p>Transcension points (for the first layer) are based on the highest ascension layer reached during that transcension. This includes partial progress to the next layer. For those that like math: the base TP gain formula is (8^(AL-3))%, and partial progress is calculated as (pointsInCurrentLayer/requiredPointsForNextLayer)^0.5, which is added to the AL value of the first formula. When available transcension points surpass claimed points (including those spent on upgrades), a diminishing return applies</p>
+            <h2>Perks</h2>
+            <p>Every time you transcend, you receive perk points. Transcension perks, unlike those for ascension, activate passively and seperately per ascension layer. Specifics can be found in the perks sub-tab of the transcension tab. Similar to ascension perks, ascension gameplay unlocks provided by transcension perks are activated immediately so in the example of Improved Ascension Reset, that activates directly upon unlocking the ascension layer</p>
+            <h2>What does transcension reset?</h2>
+            <p>Transcension reset ascension layers and their upgrades and gameplay unlocks. Ascension trials and perks persist through transcension. So trial don't need to be repeated during transcensions, and have their bonus effects applied form the start. Unlike ascension, transcension resets ascension to ascension layer 1 with 0 points claimed, so passive bonusses such as prestige power work from the start</p>
+            <h2>Transcension QuickView</h2>
+            <p>When transcension is unlocked, the Prestige QuickView is automatically extended with transcension information. All prestige and ascension information is still there, but an additional row with the combined totals per ascension point gain per layer is shown below. If you have an x4 bonus for AL1 through TL1, and an x2 bonus from TL2, it'll show a total AL1 bonus of x8, and an AL2 bonus of x2</p>
         </div>
         <div id="info-block-game-info" class="info-block">
             <!-- <h2><span style="color: #FF8800; text-shadow: 0px 0px 0px black;">I</span>ncremental <span style="color: #FF8800;">A</span>dventures</h2> -->
