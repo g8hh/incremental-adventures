@@ -98,6 +98,15 @@ body.smallUnits .hero-block{
     padding: 2px 15px;
     margin: 5px;
 }
+body.tinyUnits .hero-block .hero-health, body.tinyUnits .hero-block .hero-armor, body.tinyUnits .hero-block .hero-healing{
+    display: none;
+}
+body.tinyUnits .enemy-block .enemy-health{
+    display: none;
+}
+body.tinyUnits .hero-block, body.tinyUnits .enemy-block{
+    padding: 2px 7.5px;
+}
 .hero-block>h3,.hero-block>p{
     position: relative;
     z-index: 2;
@@ -643,6 +652,27 @@ body.dark #offline-progress-info{
 }
 #transcension-perks-table, .prestige-upgrade-button>p{
     margin: 7.5px 0;
+}
+.save-backups-table {
+    display: inline-block;
+    text-align: center;
+    border-collapse: collapse;
+    margin-top: 15px;
+    font-size: 14px;
+}
+.save-backups-table th{
+    font-weight: 600;
+    border: 1px solid #eeeeee;
+}
+.save-backups-table td, .save-backups-table th{
+    padding: 7.5px;
+    border: 1px solid #eeeeee;
+}
+.save-backups-table, .prestige-upgrade-button>p{
+    margin: 7.5px 0;
+}
+.save-backups-table tr{
+    max-height: 30px;
 }
 #autobuyer-presets-table{
     display: inline-block;
