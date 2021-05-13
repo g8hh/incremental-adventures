@@ -1,8 +1,8 @@
-<head>          <meta charset="utf-8">
-       <title>增量冒险</title>
+<head>          
+    <meta charset="utf-8">
+    <title>增量冒险</title>
     <script src='kongregate_api.js'></script>
     <script type="text/javascript" src="PlayFabClientApi.js"></script>
-
     <script src="lodash.min.js"></script>
     <script src="break_eternity.min.js"></script>
     <script src="aes.js"></script>
@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
 </head>
 <body>
-                  <script src="chs.js?20210427"></script>
+                     <script src="chs.js?20210513"></script>
 <script src="//likexia.gitee.io/game/zh/core.js"></script>
 
     <div id="top-menu">
@@ -99,7 +99,7 @@
             <h2>How does offline progress work?</h2>
             <p>Offline progress is obtained when you return to the game after having it closed for a while. When processing offline progress, the game actually does all the calculations it would have done if the game was open, but much faster (up to 5 minutes per second, depending on your device speed). This means it is identical to keeping the game open, without the need to actually keep the game open when you're busy living life! More importantly, you can freely interact with the game during offline progress. When you open any tab other than the battlefield, progress is paused and any changes you make are included in the offline progress processing. So when used properly, it can result in a very similar result as checking in to the game every few minutes</p>
             <h2>How much offline progress do I obtain when I'm away?</h2>
-            <p>The first hour gives 100% progress, after that you get hours offline ^0.98, up to a maximum of 72 hours of offline progress, obtained after roughly 78 hours of being offline. This means offline progress is 90-100% as effective as online progress. The maximum amount of offline time is based on your total time played (including offline progress), to not overwhelm new players with too much offline progress. The first five hours of the offline progress cap are obtained in about 15 hours of playtime, the first hour of offline progress is obtained in an hour. 24 hours of offline progress is obtained after roughly 200 hours played, the maximum cap of 72 hours of offline progress is obtained with roughly 50 days played</p>
+            <p>The first hour gives 100% progress, after that you get hours offline ^0.98, up to a maximum of 5 days of offline progress, obtained after roughly 132 hours of being offline. This means offline progress is 90-100% as effective as online progress. The maximum amount of offline time is based on your total time played (including offline progress), to not overwhelm new players with too much offline progress. The first five hours of the offline progress cap are obtained in about 15 hours of playtime, the first hour of offline progress is obtained in an hour. 24 hours of offline progress is obtained after roughly 200 hours played, the maximum cap of 5 days of offline progress is obtained with roughly 122 days played. You can find your current offline progress cap in the options tab</p>
             <h2>I feel like I'm progressing too slow, are there any guides?</h2>
             <p>manowar999 was nice enough to write a guide for the game, you can find it as a sticky on the forums! Additionally, Frogger was nice enough to update it shortly after the Steam release, it can be found among the Steam community guides. It can definitely be of use if you feel like you're missing something. But of course, you can figure it all out by yourself as well if you prefer that! Oh, and additional tabs will appear in this Info section as well when that becomes relevant. So check those out when something is unclear!</p>
             <h2>What do these numbers with e mean?</h2>
@@ -238,7 +238,7 @@
     <div id="launch-screen" class="game-screen">
         <h1>Welcome to Incremental Adventures!</h1>
         <p>The game launched as paused because you've configured it to do so in the options tab.</p>
-        <div id="launcher-start-game-button" class="prestige-button-block"><div class="button prestige-button">Start game</div><br></div>
+        <div class="prestige-button-block"><div id="launcher-start-game-button" class="button prestige-button">Start game</div><br></div>
     </div>
     <div id="loading-screen" class="game-screen" style="display: inline-block;">
         <h2>Loading game..</h2>
