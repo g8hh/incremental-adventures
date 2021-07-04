@@ -745,18 +745,33 @@ body.dark #offline-progress-info{
     display: inline-block;
     margin-left: 5px;
     position: relative;
+    flex-basis: 300px;
+    flex-basis: min(30%, 400px);
+}
+#next-prestige-percentage-text:empty{
+    display: none;
 }
 #next-ascension-percentage-text{
     white-space: nowrap;
     display: inline-block;
     margin-left: 5px;
     position: relative;
+    flex-basis: 300px;
+    flex-basis: min(30%, 400px);
+}
+#next-ascension-percentage-text:empty{
+    display: none;
 }
 #next-transcension-percentage-text{
     white-space: nowrap;
     display: inline-block;
     margin-left: 5px;
     position: relative;
+    flex-basis: 300px;
+    flex-basis: min(30%, 400px);
+}
+#next-transcension-percentage-text:empty{
+    display: none;
 }
 .last-layer-progress{
     font-size: 75%;
