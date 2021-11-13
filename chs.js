@@ -167,7 +167,7 @@ var cnItems = {
     'Damage taken': '承受伤害',
     'Default minimal autobuy multiplier': '默认最小自动购买乘数',
     'Every time a hero is healed by a cleric, all stats of all heroes are increased by x%. This works incrementaly for every heal, but it resets on respawn': '每当英雄被牧师治愈后，所有英雄的所有属性都会提高x％。 这对每次治疗都是渐进的，但是会在重生时重置',
-    'Ironskin Shield': '铁皮盾牌',
+    'Ironskin Shield': '钢皮盾牌',
     'Morale': '士气',
     'Mystical Cape': '神秘披风',
     'Oakwood Staff': '橡木法杖',
