@@ -829,6 +829,7 @@ var cnRegReplace = new Map([
     [/^Layer (\d+) damage$/, '层 $1 伤害'],
     [/^Layer (\d+) experience$/, '层 $1 经验'],
     [/^Layer (\d+) healing$/, '层 $1 治疗'],
+    [/^(.+) - You\'ve progressed to floor$/, '$1 - 你的进度达到层' ],
     [/^Layer (\d+) max health$/, '层 $1 生命上限'],
     [/^Prestige Layer (\d+)$/, '声望第 $1 层'],
     [/^requires layer (\d+) to be unlocked$/, '需要先解锁第 $1 层'],
