@@ -37,6 +37,8 @@ var cnItems = {
     'Select Hero Stats': '选择英雄属性',
     'Start game': '开始游戏',
     'Stats used': '剩余点数',
+    'You\'ve progressed to floor': '你的进度达到层 ',
+    'You\'ve respawned at floor': '你已经重生在层 ',
     'You can freely change your team at any time. Your floor will be reset to 1, but no worries, your level will remain the same!': '您可以随时自由更改您的团队。 你的楼层将被重置为1，但不用担心，你的等级将保持不变！',
     'Warrior': '战士',
     'Changing your team resets your gamefloor back to 1. But no worries, your level will remain the same! Are you sure you want to change your team?': '改变你的团队将你的游戏层数重置为1.但不用担心，你的等级将保持不变！ 你确定要改变你的团队吗？',
@@ -829,11 +831,10 @@ var cnRegReplace = new Map([
     [/^Layer (\d+) armor$/, '层 $1 护甲'],
     [/^Layer (\d+) damage$/, '层 $1 伤害'],
     [/^Layer (\d+) experience$/, '层 $1 经验'],
-    [/^) - last (\d+) s ago$/, '花费了 $1 秒'],
-    [/^Prestige Layer (\d+) (requires layer (\d+) to be unlocked$/, '声望 $1 层（需要先解锁 $2 层']
+    [/^Prestige Layer (\d+) \(requires layer (\d+) to be unlocked$/, '声望 $1 层\(需要先解锁 $2 层']
     [/^Layer (\d+) healing$/, '层 $1 治疗'],
     [/^(.+) - You\'ve respawned at floor$/, '$1 - 你重生在层'],
-    [/^(.+) - You\'ve progressed to floor$/, '$1 - 你的进度达到层'],
+    [/^(.+) - You\'ve progressed to floor$/, '$1 - 你的进度达到层' ],
     [/^Layer (\d+) max health$/, '层 $1 生命上限'],
     [/^Prestige Layer (\d+)$/, '声望第 $1 层'],
     [/^Current: (.+) points: (.+) >$/, '当前: $1 点数: $2 >'],
