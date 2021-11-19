@@ -714,7 +714,6 @@ var cnPrefix = {
     "+": "+",
     " ": " ",
     ": ": "： ",
-    "You've progress to floor": "你的进度到达层"
     'Damage: ': '伤害: ',
     'Armor: ': '防御: ',
     'Healing: ': '治疗: ',
