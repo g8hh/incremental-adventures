@@ -497,7 +497,7 @@ var cnItems = {
     'Advised': '忠告',
     'Auto-buyers automatically upgrade your stat upgrades for the previous prestige layer. They automatically trigger when configured (default: on respawn) if enough points are available to buy an upgrade!': '自动购买者会根据提升属性数量来提升声望层级。 如果有足够的声望点可以购买升级，它们将在设置条件满足时触发（默认值：重生时）',
     'Ascension points on refund': '提升点退回',
-    'Adds the amount of claimed prestige points that this layer has to the layer below on floor change, including points spent on stats upgrades. This amount is increased by the floor number reached. AutoBuyers also trigger, without triggering an actual prestige.': '购买此升级后会开启软声望功能，本层将会根据英雄爬楼层数自动获得额外的声望点数，而不用实际选择声望；前提是此楼层声望点不能为0，获得声望点后，自动购买者也会触发自动加点。',
+    'Adds the amount of claimed prestige points that this layer has to the layer below on floor change, including points spent on stats upgrades. This amount is increased by the floor number reached. AutoBuyers also trigger, without triggering an actual prestige.': '购买此升级后会开启软声望功能，本层将会根据英雄爬楼层数自动获得额外的声望点数，而不用实际选择声望。前提是此楼层声望点不能为0，获得声望点后，自动购买者也会触发自动加点。',
     '- Progress to Ascension layer': '- 前往转生层进度',
     '- Next stat or hero unlock at Floor': '- 下一个属性或英雄解锁在层',
     'Incremental Adventures': '增量冒险',
