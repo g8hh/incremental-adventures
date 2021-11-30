@@ -856,6 +856,7 @@ var cnRegReplace = new Map([
     [/^Layer (.+) Healing$/, '层 $1 治疗'],
     [/^Layer (.+) Max Health$/, '层 $1 生命值上限'],
     [/^\- Progress to Prestige layer (.+) point$/, '\- 声望进度层 $1 点'],
+    [/^(.+) \- You've progressed to floor$/, '$1 - 你的进度到达层'],
     [/^Skip up to (.+) floor\(s\)(.+)$/, '向上跳过 $1 层$2'],
     [/^Your hero stats are multiplied (.+) because you have unlocked more than (.+) heroes!$/, '你的英雄统计数据乘以$1，因为你解锁了超过$2个英雄！'],
     [/^Prestige for (.+) points$/, '声望 $1 点'],
