@@ -847,7 +847,7 @@ var cnRegReplace = new Map([
     [/^Current: (.+) points: x(.+) \> xee$/, '当前: $1 点数: x$2 \> xee'],
     [/^(.+) \> (.+) Overkill$/, '$1 \> $2 斩杀'],
     [/^Cost: (.+) gold$/, '成本: $1 黄金'],
-    [/^\)\- last (\d+)s ago$/, ' \- 用时$1秒'],
+    [/^\) \- last (\d+)s ago$/, ' \- 用时$1秒'],
     [/^Next: (.+) points: x(.+) \>$/, '下一个: $1 点数: x$2 \>'],
     [/^Available: (.+) points: x(.+) \>$/, '可用的: $1 点数: x$2 \>'],
     [/^Available: (.+) points: x(.+) \> x(.+)$/, '可用的: $1 点数: x$2 \> x$3'],
