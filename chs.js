@@ -11,7 +11,7 @@
 var cnItems = {
     _OTHER_: [],
 
-    //未分类：
+    //通用名词：
     'Armor': '护甲',
     'damage': '伤害',
     'Damage': '伤害',
@@ -39,6 +39,7 @@ var cnItems = {
     'Select Hero Stats': '选择英雄属性',
     'Start game': '开始游戏',
     'Stats used': '剩余点数',
+    'synergize healed': '协作治疗了',
     'You can freely change your team at any time. Your floor will be reset to 1, but no worries, your level will remain the same!': '您可以随时自由更改您的团队。 你的楼层将被重置为1，但不用担心，你的等级将保持不变！',
     'You\'ve respawned at floor': '你已经重生在层 ',
     'Warrior': '战士',
@@ -59,6 +60,10 @@ var cnItems = {
     'Max Health': '生命值上限',
     'point': '点数',
     'points': '点数',
+    //声望重置翻译
+    'Prioritize biggest stats gain': '优先获取属性',
+    'Prioritize biggest stats gain on medium floor change': '优先获取属性且跳层速度中等',
+    'Requires this unlock on the layer below': '需要解锁低一层中的相应功能',
     'Prestige Layer': '声望层级',
     'prestige points': '声望点',
     'Respawn at (floor-10), instead of': '楼层增益（10层），不再重生在',
@@ -128,7 +133,7 @@ var cnItems = {
     'Synergy': '协作',
     'Timestamp': '时间戳',
     'When you attack, you also heal for x% of your healing. When you heal, you also attack for x% of your damage': '当你攻击敌人时，你会对第一位队友造成x％的治疗效果。 当你治疗同伴时，你也会敌人造成x％你的伤害',
-    'When you deal more damage than the enemy has health, x% of that damage carries over to the next enemy (and the next, if you dealt that much': '当你的伤害超过敌人的生命值时，你的x％的伤害会传递给下一个敌人（如果你的伤害足够多，它会继续往下传，直到这一层敌人全部被消灭）',
+    'When you deal more damage than the enemy has health, x% of that damage carries over to the next enemy (and the next, if you dealt that much': '当你的伤害超过敌人的生命值时，你的x％的伤害会传递给下一个敌人（如果你造成了足够多的伤害，会继续转移给下一个敌人）',
     'When you healed more than your targets max-health, x% of that healing goes over the maximum health. Up to 1000% of the targets max health': '当牧师的治疗量超过队友的生命上限时，队友的血量上限会临时增加X%*牧师治疗数值（临时上限会延续到重生）。临时血量上限不能超过该角色血量的1000%',
     'You have x% chance to deal double damage': '攻击有x％的几率造成双倍伤害',
     'All equipment yields base stats, which means they get multiplied by all your multipliers!': '所有装备都会增益基本属性，这意味着它们会乘以所有乘数！',
@@ -787,7 +792,7 @@ var cnPostfix = {
     ' Critical Chance': ' 暴击几率',
     ' Overheal': ' 过量治疗',
     ' Unity': ' 联合',
-    ' Synergy': ' 协同',
+    ' Synergy': ' 协作',
     ' - Offline progress cap': ' - 离线进度上限',
     '': '',
     '': '',
@@ -849,6 +854,7 @@ var cnRegReplace = new Map([
     [/^Cost: (.+) gold$/, '成本: $1 黄金'],
     [/^\) \- last (\d+)s ago$/, ' \- 用时$1秒'],
     [/^Next: (.+) points: x(.+) \>$/, '下一个: $1 点数: x$2 \>'],
+    [/^Current: (.+) points: x(.+) \>$/, '当前拥有: $1 点数: x$2 \>'],
     [/^Available: (.+) points: x(.+) \>$/, '可用的: $1 点数: x$2 \>'],
     [/^Available: (.+) points: x(.+) \> x(.+)$/, '可用的: $1 点数: x$2 \> x$3'],
     [/^Next: (.+) points: x(.+) \> x(.+)$/, '下一个: $1 点数: x$2 \> x$3'],
