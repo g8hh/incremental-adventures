@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
 </head>
 <body>
-<script src="chs.js?202106041511"></script>
+<script src="chs.js?07071443"></script>
 <script src="https://cdn.jsdelivr.net/gh/g8hh/g8hh.github.io/zh/core.js"></script>
     <div id="top-menu">
         <div id="offline-progress-info">Offline progress</div>
@@ -88,9 +88,9 @@
             <h2>How does the game save?</h2>
             <p>It uses cloud save (as well as a local backup)! If you are logged in to Kongregate, the game automatically saves to the cloud every thirty seconds or so. Obviously this requires an internet connection to work, but if you lose internet for a bit, it'll pick up later. If you switch devices and continue on another device later, it'll grab your save from the cloud if you are logged in to the same Kongregate account. Warning: If you decide to run two version of the game to compare strategies, it's better not to run those from the same Kongregate account (incognito without being logged in is fine). Otherwise, both versions may sync to the cloudsave and that could cause the "wrong" version to be considered recent</p>
             <h2>When can I prestige and what does that mean?</h2>
-            <p>Your first prestige will be unlocked when your team reaches level 100. You can reset your level to acquire "prestige point(s)". These can be spend on a variety of upgrade that improve your next run!</p>
+            <p>Your first prestige will be unlocked when your team reaches level 100. You can reset your level to acquire "prestige point(s)". These can be spent on a variety of upgrades that improve your next run!</p>
             <h2>Is there more content after prestige?</h2>
-            <p>Yes. There are more layers to prestige. They consume all of your previous prestige points, as well as points spend on stats upgrades. This will set you back a bit, but allow you to reach even higher numbers when you proceed. And once get to around prestige layer 20, you'll unlock ascension which offers a whole new mechanic to further push your limits!</p>
+            <p>Yes. There are more layers to prestige. They consume all of your previous prestige points, as well as points spend on stats upgrades. This will set you back a bit, but allow you to reach even higher numbers when you proceed. and once you get to around prestige layer 20, you'll unlock ascension which offers a whole new mechanic to further push your limits!</p>
             <h2>What is the highest prestige layer?</h2>
             <p>Who told you there is one? No one should know this yet!</p>
             <h2>I have six heroes, why didn't I get a seventh?</h2>
@@ -190,6 +190,7 @@
                 <span style="font-weight: 600;">Mixed prioritization: </span>Combines both prioritization options into one. Until you unlock the ascension layer 3 autobuyer, it behaves equal to higher layer priotization. After that, layers above the second only fire if all layers below it would also be able to fire. With the exception to the layer 1 autobuyer, which is excluded from this logic because it acquires ascension points differently to other layers. As an example: the ascension layer 4 autobuyer will only fire if both the layer 2 and layer 3 autobuyers are also able to fire at that time, if that applies, it fires for the highest layer, in this example, layer 4. If layer 2 could fire, but layer 3 couldn't, it would fire for layer 2 in the same example
                 <br/><span style="font-weight: 600;">Mixed prioritization range: </span>Mixed layer prioritization has an additional option to configure the range it uses. Layers that don't meet their autobuy requirement yet, but have enough ascension points available to fall within this range, are considered minor autobuy targets. Instead of looking at the highest consecutive autobuy target reached, it will look for the highest chain of minor autobuy targets. If a regular autobuy target is reached within that chain, it will determine the layer to ascend on. If either the highest layers in the chain, or the layer below it meets the regular autobuy target, it will ascend on the highest layer in the minor chain. Otherwise, it'll ascend on the highest layer in the chain that meets the regular autobuy target. In the earlier example, layer 2 could fire, layer 3 couldn't and layer 4 could. If layer 3 happened to be in the configured range, it would fire on ascension layer 4 after all
                 <br/><span style="font-weight: 600;">Biggest stats gain, handle AL1 as: </span>Determines whether you want to include AL1 in the biggest stats gain logic (default layer), or only ascend it when no other layers meet their minimal requirement (fallback layer). Because AL1 has less diminishing return than higher layers, it provides less value to frequently ascend it when you're at high ascension layers
+                <br/><span style="font-weight: 600;">Biggest stats chain: </span>Similar to mixed prioritization, this will only include ascension layers 3+ in the biggest stats gain comparison if all layers below them have reached their minimal autobuy target as well (with the exception of layer 1)
             <h2>Auto ascend</h2>
             <p>Configures when you want your autobuyers to auto-ascend. The options are listed below<br/>
                 <span style="font-weight: 600;">When possible: </span>As soon as any auto-buyer meets its requirements, it'll fire an auto-ascend<br/>
@@ -248,13 +249,13 @@
         <p>Flash is not required to run this game. It is entirely HTML5</p>
     </div>
 </body>
+<script src="gniller-min.js"></script>
 <!--客服 开始-->
-<script src="//g8hh.com/static/js/jquery.min.js"></script>
-<link rel="stylesheet" href="//g8hh.com/static/css/kf.css" type="text/css" media="screen" charset="utf-8">
-<script src="//g8hh.com/static/js/kf.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/g8hh/g8hh.github.io/static/js/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/g8hh/g8hh.github.io/static/css/kf.css" type="text/css" media="screen" charset="utf-8">
+<script src="https://cdn.jsdelivr.net/gh/g8hh/g8hh.github.io/static/js/kf.js"></script>
 <!-- 客服 结束 -->
 <!--站长统计-->
     <div style="display: none">
         <script type="text/javascript" src="//s19.cnzz.com/z_stat.php?id=1267958737&web_id=1267958737"></script>
     </div>
-<script src="gniller-min.js"></script>
